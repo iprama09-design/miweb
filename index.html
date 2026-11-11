@@ -35,7 +35,6 @@
         header {
             text-align: center;
             padding: 80px 20px 40px;
-            position: relative;
         }
 
         .badge {
@@ -62,7 +61,6 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 15px;
-            text-shadow: 0 0 30px rgba(0, 240, 255, 0.2);
         }
 
         header p {
@@ -93,7 +91,7 @@
             padding: 40px 30px;
             text-align: center;
             position: relative;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.4s ease;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -108,11 +106,6 @@
         .card.featured {
             border-color: rgba(112, 0, 255, 0.5);
             background: linear-gradient(180deg, rgba(112, 0, 255, 0.15) 0%, var(--card-bg) 100%);
-        }
-
-        .card.featured:hover {
-            border-color: var(--accent-purple);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(112, 0, 255, 0.25);
         }
 
         .popular-tag {
@@ -285,3 +278,4 @@
 
 </body>
 </html>
+           
