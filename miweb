@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Academy Prama - GitHub</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background: #0f172a; color: #fff; padding-top: 100px; }
+        h1 { color: #38bdf8; }
+    </style>
+</head>
+<body>
+    <h1>¡Academy Prama en GitHub Pages!</h1>
+    <p>La web está funcionando correctamente desde cero.</p>
+</body>
+</html>
