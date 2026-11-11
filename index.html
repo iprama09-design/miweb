@@ -3,371 +3,219 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Academy Prama | Elite Fortnite Coaching</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Academy Prama | Fortnite Coaching</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg-base: #070b14;
-            --bg-card: #0f172a;
-            --accent-cyan: #00f0ff;
-            --accent-purple: #9d4edd;
-            --text-main: #ffffff;
-            --text-muted: #94a3b8;
-        }
-
-        * {
+        body {
+            background-color: #070b14;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
         }
-
-        body {
-            background-color: var(--bg-base);
-            color: var(--text-main);
-            min-height: 100vh;
-        }
-
-        /* NAVEGACIÓN Y MENÚ DE 3 LÍNEAS */
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
             background: #030712;
-            padding: 20px 40px;
-            border-bottom: 2px solid var(--accent-cyan);
+            padding: 20px 30px;
+            border-bottom: 2px solid #00f0ff;
             position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 100;
         }
-
         .logo {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 900;
-            color: var(--accent-cyan);
-            text-decoration: none;
-            letter-spacing: 1.5px;
-            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+            color: #00f0ff;
+            letter-spacing: 1px;
         }
-
         .menu-btn {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             cursor: pointer;
-            color: var(--accent-cyan);
+            color: #00f0ff;
             background: rgba(0, 240, 255, 0.1);
-            border: 1px solid var(--accent-cyan);
-            padding: 5px 12px;
+            border: 1px solid #00f0ff;
+            padding: 4px 12px;
             border-radius: 8px;
-            transition: all 0.3s ease;
         }
-
-        .menu-btn:hover {
-            background: var(--accent-cyan);
-            color: #000;
-            box-shadow: 0 0 15px var(--accent-cyan);
-        }
-
-        /* PANEL DESPLEGABLE CON MÚLTIPLES OPCIONES */
-        .dropdown-menu {
+        /* MENÚ DESPLEGABLE */
+        .dropdown {
             position: fixed;
             top: 0;
-            right: -360px;
-            width: 350px;
+            right: -300px;
+            width: 260px;
             height: 100vh;
             background: #0b0f19;
-            border-left: 2px solid var(--accent-cyan);
+            border-left: 2px solid #00f0ff;
+            box-shadow: -10px 0 30px rgba(0,0,0,0.8);
             display: flex;
             flex-direction: column;
-            padding: 30px 20px;
-            transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
-            z-index: 1001;
-            box-shadow: -20px 0 50px rgba(0, 0, 0, 0.9);
-            overflow-y: auto;
+            padding: 70px 20px 20px;
+            transition: right 0.3s ease;
+            z-index: 101;
         }
-
-        .dropdown-menu.active {
+        .dropdown.active {
             right: 0;
         }
-
-        .menu-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            border-bottom: 1px solid #1e293b;
-            padding-bottom: 15px;
-        }
-
-        .menu-header h3 {
-            font-family: 'Orbitron', sans-serif;
-            color: var(--accent-cyan);
-            font-size: 1.1rem;
-        }
-
-        .close-btn {
-            background: none;
-            border: none;
-            color: #ff4d4d;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        .dropdown-menu a {
-            color: var(--text-muted);
+        .dropdown a {
+            color: #94a3b8;
             text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            padding: 10px 12px;
-            border-radius: 6px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-            transition: all 0.2s ease;
-            display: block;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-weight: 600;
+            font-size: 0.95srem;
         }
-
-        .dropdown-menu a:hover {
-            color: var(--accent-cyan);
-            background: rgba(0, 240, 255, 0.08);
-            padding-left: 18px;
+        .dropdown a:hover {
+            color: #00f0ff;
+            padding-left: 5px;
         }
-
-        .menu-section-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.75rem;
-            color: var(--accent-purple);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin: 15px 0 5px 10px;
-        }
-
-        /* CONTENIDO PRINCIPAL */
         .container {
-            max-width: 1100px;
+            max-width: 1000px;
             margin: 40px auto;
             padding: 0 20px;
             text-align: center;
         }
-
         h1 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 3rem;
+            font-size: 2.8rem;
             margin-bottom: 10px;
             color: #ffffff;
-            text-transform: uppercase;
-            letter-spacing: 2px;
         }
-
-        p.subtitle {
-            color: var(--text-muted);
-            font-size: 1.15rem;
-            margin-bottom: 50px;
+        p {
+            color: #94a3b8;
+            font-size: 1.1rem;
+            margin-bottom: 40px;
         }
-
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
         }
-
         .card {
-            background: var(--bg-card);
-            border: 2px solid #1e293b;
-            border-radius: 20px;
-            padding: 40px 30px;
+            background: #0f172a;
+            border: 1px solid #1e293b;
+            border-radius: 15px;
+            padding: 30px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
-
-        .card:hover {
-            transform: translateY(-8px);
-            border-color: var(--accent-cyan);
-            box-shadow: 0 15px 35px rgba(0, 240, 255, 0.2);
-        }
-
         .card.featured {
-            border-color: var(--accent-purple);
+            border-color: #9d4edd;
             background: #150f26;
         }
-
-        .badge {
-            background: var(--accent-purple);
-            color: #fff;
-            font-size: 0.75rem;
-            font-weight: 800;
-            padding: 6px 16px;
-            border-radius: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 15px;
-            display: inline-block;
-        }
-
-        .card h3 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
-            color: var(--text-main);
-            margin-bottom: 15px;
-        }
-
         .price {
             font-family: 'Orbitron', sans-serif;
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: bold;
-            color: var(--accent-cyan);
+            color: #00f0ff;
             margin: 20px 0;
         }
-
         .card.featured .price {
             color: #e0aaff;
         }
-
         ul {
             list-style: none;
             padding: 0;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             text-align: left;
-            color: var(--text-muted);
+            color: #94a3b8;
+            font-size: 0.9rem;
         }
-
         ul li {
-            margin-bottom: 12px;
-            font-size: 0.95rem;
+            margin-bottom: 10px;
         }
-
         .btn {
             display: block;
-            background: #1e293b;
-            color: var(--text-main);
-            padding: 15px;
-            border-radius: 10px;
+            background: #00f0ff;
+            color: #000000;
+            padding: 12px;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: bold;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: all 0.3s ease;
         }
-
-        .btn:hover {
-            background: var(--accent-cyan);
-            color: #000;
-            box-shadow: 0 0 20px var(--accent-cyan);
-            border-color: var(--accent-cyan);
-        }
-
         .card.featured .btn {
-            background: var(--accent-purple);
+            background: #9d4edd;
+            color: #ffffff;
         }
-
-        .card.featured .btn:hover {
-            background: #b56576;
-            color: #fff;
-            box-shadow: 0 0 20px var(--accent-purple);
-        }
-
-        footer {
-            text-align: center;
-            padding: 40px;
-            color: var(--text-muted);
-            border-top: 1px solid #1e293b;
-            margin-top: 60px;
-            background: #030712;
-            font-size: 0.9rem;
+        .close-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: #ff4d4d;
+            font-size: 1.4rem;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
 
-    <!-- BARRA SUPERIOR -->
     <nav>
-        <a href="#" class="logo">ACADEMY PRAMA</a>
+        <div class="logo">ACADEMY Prama</div>
         <button class="menu-btn" onclick="toggleMenu()">☰</button>
     </nav>
 
-    <!-- MENÚ DESPLEGABLE LATERAL CON MÚLTIPLES OPCIONES -->
-    <div class="dropdown-menu" id="dropdownMenu">
-        <div class="menu-header">
-            <h3>MENÚ PRINCIPAL</h3>
-            <button class="close-btn" onclick="toggleMenu()">✕</button>
-        </div>
-
-        <div class="menu-section-title">Navegación</div>
-        <a href="#inicio" onclick="toggleMenu()">🏠 Inicio</a>
+    <!-- MENÚ DESPLEGABLE CON VARIAS OPCIONES -->
+    <div class="dropdown" id="myDropdown">
+        <button class="close-menu" onclick="toggleMenu()">✕</button>
+        <a href="#" onclick="toggleMenu()">🏠 Inicio</a>
         <a href="#planes" onclick="toggleMenu()">💎 Planes de Coaching</a>
-        <a href="#servicios" onclick="toggleMenu()">⚡ Servicios Adicionales</a>
-        <a href="#contacto" onclick="toggleMenu()">📞 Contacto y Soporte</a>
-
-        <div class="menu-section-title">Pagos Directos (PayPal)</div>
         <a href="https://paypal.me/VyroEsports" target="_blank" onclick="toggleMenu()">💳 Pagar Plan Básico (15€)</a>
         <a href="https://paypal.me/VyroEsports" target="_blank" onclick="toggleMenu()">💳 Pagar Plan Intermedio (45€)</a>
         <a href="https://paypal.me/VyroEsports" target="_blank" onclick="toggleMenu()">💳 Pagar Plan Elite Pro (75€)</a>
-        <a href="https://paypal.me/VyroEsports" target="_blank" onclick="toggleMenu()">🔗 Enlace General PayPal (VyroEsports)</a>
-
-        <div class="menu-section-title">Especialidades Fortnite</div>
-        <a href="#planes" onclick="toggleMenu()">🎯 VOD Review Profesional</a>
-        <a href="#planes" onclick="toggleMenu()">🛠️ Configuración de Aim y Settings</a>
-        <a href="#planes" onclick="toggleMenu()">🏰 Estrategias de Box-Fighting</a>
-        <a href="#planes" onclick="toggleMenu()">🗺️ Rotaciones y Endgame (FNCS)</a>
-        <a href="#planes" onclick="toggleMenu()">📊 Análisis de Drop-Spots</a>
-        <a href="#planes" onclick="toggleMenu()">🧠 Psicología y Mentalidad Competitiva</a>
-        <a href="#planes" onclick="toggleMenu()">👥 Sinergia y Táctica de Dúos</a>
-        <a href="#planes" onclick="toggleMenu()">📈 Subida de Power Ranking (PR)</a>
-
-        <div class="menu-section-title">Comunidad y Redes</div>
-        <a href="https://twitch.tv" target="_blank" onclick="toggleMenu()">📺 Canal de Twitch</a>
-        <a href="https://tiktok.com" target="_blank" onclick="toggleMenu()">🎬 TikTok Oficial (Vyro eSports)</a>
-        <a href="https://discord.com" target="_blank" onclick="toggleMenu()">💬 Servidor de Discord</a>
-        <a href="https://twitter.com" target="_blank" onclick="toggleMenu()">🐦 Twitter / X Updates</a>
-        <a href="https://youtube.com" target="_blank" onclick="toggleMenu()">▶️ Canal de YouTube VODs</a>
-
-        <div class="menu-section-title">Legal y Ayuda</div>
-        <a href="#" onclick="alert('Academy Prama - Todos los pagos se procesan de forma segura a través de PayPal oficial.'); toggleMenu();">🔒 Términos y Garantía de Pago</a>
-        <a href="#" onclick="alert('Soporte técnico directo vía Discord o correo de la academia.'); toggleMenu();">❓ Preguntas Frecuentes (FAQ)</a>
-        <a href="#" onclick="alert('Versión 2.6 - Optimizado para rendimiento competitivo.'); toggleMenu();">ℹ️ Acerca de la Academia</a>
+        <a href="https://paypal.me/VyroEsports" target="_blank" onclick="toggleMenu()">🔗 Ir a mi PayPal (VyroEsports)</a>
+        <a href="#" onclick="alert('Academy Prama - VOD Reviews y tácticas competitivas de Fortnite.'); toggleMenu();">ℹ️ Sobre la Academia</a>
     </div>
 
-    <!-- CABECERA -->
-    <div class="container" id="inicio">
+    <div class="container">
         <h1>Academy Prama</h1>
-        <p class="subtitle">Plataforma Élite de Coaching y Alto Rendimiento en Fortnite.</p>
+        <p>Coaching profesional de Fortnite y análisis táctico avanzado.</p>
 
-        <!-- TARJETAS DE PRECIOS -->
         <div class="grid" id="planes">
-            
             <div class="card">
-                <div>
-                    <span class="badge">Iniciación</span>
-                    <h3>Plan Básico</h3>
-                    <div class="price">15€</div>
-                    <ul>
-                        <li>✓ Revisión de 1 VOD individual</li>
-                        <li>✓ Análisis de box-fighting</li>
-                        <li>✓ Pautas de early-game</li>
-                    </ul>
-                </div>
-                <a href="https://paypal.me/VyroEsports" class="btn" target="_blank">Contratar (15€)</a>
+                <h3>Plan Básico</h3>
+                <div class="price">15€</div>
+                <ul>
+                    <li>✓ Revisión de 1 VOD individual</li>
+                    <li>✓ Análisis de box-fighting</li>
+                    <li>✓ Pautas de early-game</li>
+                </ul>
+                <a href="https://paypal.me/VyroEsports" class="btn" target="_blank">Contratar</a>
             </div>
 
             <div class="card featured">
-                <div>
-                    <span class="badge" style="background:var(--accent-cyan); color:#000;">Más Popular</span>
-                    <h3>Plan Intermedio</h3>
-                    <div class="price">45€</div>
-                    <ul>
-                        <li>✓ Partidas en directo analizadas</li>
-                        <li>✓ Rutinas personalizadas de aim</li>
-                        <li>✓ Estrategias avanzadas de Endgame</li>
-                        <li>✓ Soporte semanal constante</li>
-                    </ul>
-                </div>
-                <a href="https://paypal.me/VyroEsports" class="btn" target="_blank">Contratar (45€)</a>
+                <h3>Plan Intermedio</h3>
+                <div class="price">45€</div>
+                <ul>
+                    <li>✓ Partidas en directo analizadas</li>
+                    <li>✓ Rutinas de aim y edición</li>
+                    <li>✓ Estrategias de Endgame</li>
+                </ul>
+                <a href="https://paypal.me/VyroEsports" class="btn" target="_blank">Contratar</a>
             </div>
 
             <div class="card">
-                <div>
-                    <span class="badge">Profesional</span>
+                <h3>Plan Elite Pro</h3>
+                <div class="price">75€</div>
+                <ul>
+                    <li>✓ Acompañamiento en torneos</li>
+                    <li>✓ Estudio de Drop-Spots</li>
+                    <li>✓ Mentalidad competitiva</li>
+                </ul>
+                <a href="https://paypal.me/VyroEsports" class="btn" target="_blank">Contratar</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('myDropdown').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
+  
