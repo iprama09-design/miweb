@@ -3,143 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Academy Prama | Fortnite Coaching</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <title>Academy Prama | Elite Fortnite Coaching</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            background-color: #070b14;
-            color: #ffffff;
-            font-family: 'Inter', sans-serif;
+        :root {
+            --bg-base: #05070d;
+            --bg-card: #0d1322;
+            --accent-cyan: #00f0ff;
+            --accent-purple: #9d4edd;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+        }
+
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
         }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            min-height: 100vh;
+        }
+
+        /* NAVEGACIÓN Y MENÚ DE 3 LÍNEAS */
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: #030712;
-            padding: 20px 30px;
-            border-bottom: 2px solid #00f0ff;
+            background: #020408;
+            padding: 20px 40px;
+            border-bottom: 2px solid rgba(0, 240, 255, 0.2);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
         }
+
         .logo {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: 900;
-            color: #00f0ff;
-            letter-spacing: 1px;
+            color: var(--accent-cyan);
+            text-decoration: none;
+            letter-spacing: 1.5px;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
         }
+
         .menu-btn {
             font-size: 1.6rem;
             cursor: pointer;
-            color: #00f0ff;
+            color: var(--accent-cyan);
             background: rgba(0, 240, 255, 0.1);
-            border: 1px solid #00f0ff;
-            padding: 4px 12px;
+            border: 1px solid var(--accent-cyan);
+            padding: 5px 14px;
             border-radius: 8px;
+            transition: all 0.3s ease;
         }
-        /* MENÚ DESPLEGABLE */
+
+        .menu-btn:hover {
+            background: var(--accent-cyan);
+            color: #000;
+            box-shadow: 0 0 15px var(--accent-cyan);
+        }
+
+        /* PANEL DESPLEGABLE PROFESIONAL */
         .dropdown {
             position: fixed;
             top: 0;
-            right: -300px;
-            width: 260px;
+            right: -320px;
+            width: 300px;
             height: 100vh;
-            background: #0b0f19;
-            border-left: 2px solid #00f0ff;
-            box-shadow: -10px 0 30px rgba(0,0,0,0.8);
+            background: #090e18;
+            border-left: 2px solid var(--accent-cyan);
             display: flex;
             flex-direction: column;
-            padding: 70px 20px 20px;
-            transition: right 0.3s ease;
-            z-index: 101;
+            padding: 80px 25px 30px;
+            transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+            z-index: 1001;
+            box-shadow: -20px 0 50px rgba(0, 0, 0, 0.9);
         }
+
         .dropdown.active {
             right: 0;
         }
+
         .dropdown a {
-            color: #94a3b8;
+            color: var(--text-muted);
             text-decoration: none;
-            padding: 12px 0;
+            padding: 14px 0;
             border-bottom: 1px solid rgba(255,255,255,0.05);
             font-weight: 600;
-            font-size: 0.95srem;
+            font-size: 1rem;
+            transition: all 0.2s ease;
         }
+
         .dropdown a:hover {
-            color: #00f0ff;
-            padding-left: 5px;
+            color: var(--accent-cyan);
+            padding-left: 8px;
         }
-        .container {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 0 20px;
-            text-align: center;
-        }
-        h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.8rem;
-            margin-bottom: 10px;
-            color: #ffffff;
-        }
-        p {
-            color: #94a3b8;
-            font-size: 1.1rem;
-            margin-bottom: 40px;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-        }
-        .card {
-            background: #0f172a;
-            border: 1px solid #1e293b;
-            border-radius: 15px;
-            padding: 30px;
-            text-align: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-        }
-        .card.featured {
-            border-color: #9d4edd;
-            background: #150f26;
-        }
-        .price {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #00f0ff;
-            margin: 20px 0;
-        }
-        .card.featured .price {
-            color: #e0aaff;
-        }
-        ul {
-            list-style: none;
-            padding: 0;
-            margin-bottom: 25px;
-            text-align: left;
-            color: #94a3b8;
-            font-size: 0.9rem;
-        }
-        ul li {
-            margin-bottom: 10px;
-        }
-        .btn {
-            display: block;
-            background: #00f0ff;
-            color: #000000;
-            padding: 12px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-        .card.featured .btn {
-            background: #9d4edd;
-            color: #ffffff;
-        }
+
         .close-menu {
             position: absolute;
             top: 20px;
@@ -147,75 +112,37 @@
             background: none;
             border: none;
             color: #ff4d4d;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             cursor: pointer;
         }
-    </style>
-</head>
-<body>
 
-    <nav>
-        <div class="logo">ACADEMY Prama</div>
-        <button class="menu-btn" onclick="toggleMenu()">☰</button>
-    </nav>
-
-    <!-- MENÚ DESPLEGABLE CON VARIAS OPCIONES -->
-    <div class="dropdown" id="myDropdown">
-        <button class="close-menu" onclick="toggleMenu()">✕</button>
-        <a href="#" onclick="toggleMenu()">🏠 Inicio</a>
-        <a href="#planes" onclick="toggleMenu()">💎 Planes de Coaching</a>
-        <a href="https://paypal.me/VyroEsports" target="_blank" onclick="toggleMenu()">💳 Pagar Plan Básico (15€)</a>
-        <a href="https://paypal.me/VyroEsports" target="_blank" onclick="toggleMenu()">💳 Pagar Plan Intermedio (45€)</a>
-        <a href="https://paypal.me/VyroEsports" target="_blank" onclick="toggleMenu()">💳 Pagar Plan Elite Pro (75€)</a>
-        <a href="https://paypal.me/VyroEsports" target="_blank" onclick="toggleMenu()">🔗 Ir a mi PayPal (VyroEsports)</a>
-        <a href="#" onclick="alert('Academy Prama - VOD Reviews y tácticas competitivas de Fortnite.'); toggleMenu();">ℹ️ Sobre la Academia</a>
-    </div>
-
-    <div class="container">
-        <h1>Academy Prama</h1>
-        <p>Coaching profesional de Fortnite y análisis táctico avanzado.</p>
-
-        <div class="grid" id="planes">
-            <div class="card">
-                <h3>Plan Básico</h3>
-                <div class="price">15€</div>
-                <ul>
-                    <li>✓ Revisión de 1 VOD individual</li>
-                    <li>✓ Análisis de box-fighting</li>
-                    <li>✓ Pautas de early-game</li>
-                </ul>
-                <a href="https://paypal.me/VyroEsports" class="btn" target="_blank">Contratar</a>
-            </div>
-
-            <div class="card featured">
-                <h3>Plan Intermedio</h3>
-                <div class="price">45€</div>
-                <ul>
-                    <li>✓ Partidas en directo analizadas</li>
-                    <li>✓ Rutinas de aim y edición</li>
-                    <li>✓ Estrategias de Endgame</li>
-                </ul>
-                <a href="https://paypal.me/VyroEsports" class="btn" target="_blank">Contratar</a>
-            </div>
-
-            <div class="card">
-                <h3>Plan Elite Pro</h3>
-                <div class="price">75€</div>
-                <ul>
-                    <li>✓ Acompañamiento en torneos</li>
-                    <li>✓ Estudio de Drop-Spots</li>
-                    <li>✓ Mentalidad competitiva</li>
-                </ul>
-                <a href="https://paypal.me/VyroEsports" class="btn" target="_blank">Contratar</a>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function toggleMenu() {
-            document.getElementById('myDropdown').classList.toggle('active');
+        /* SECCIÓN HERO / INICIO */
+        .hero {
+            max-width: 900px;
+            margin: 60px auto 40px;
+            padding: 0 20px;
+            text-align: center;
         }
-    </script>
-</body>
-</html>
-  
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(157, 78, 221, 0.15);
+            color: #d8b4fe;
+            border: 1px solid var(--accent-purple);
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.2rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff 30%, var(--accent-cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-
