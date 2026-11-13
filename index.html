@@ -44,7 +44,7 @@ h1 span{color:var(--primary)}
 h2{font-size:2.2rem;font-weight:800;margin-bottom:12px}
 .sub{color:var(--muted);font-size:1.05rem}
 
-.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:24px}
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px}
 .tool-box{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:0 4px 16px rgba(15,23,42,.04)}
 .tool-box h3{font-size:1.15rem;font-weight:700;margin-bottom:14px}
 .tool-input{width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:8px;background:var(--bg);font-size:.9rem;margin-bottom:12px}
@@ -88,7 +88,6 @@ h2{font-size:2.2rem;font-weight:800;margin-bottom:12px}
 .comp-table td:nth-child(2){color:var(--muted)}
 .comp-table td:nth-child(3){color:var(--primary);font-weight:700;background:var(--accent)}
 
-/* BLOQUE DE COMPROMISO / GARANTÍA PRAMA (EN VEZ DE FALSOS TESTIMONIOS) */
 .commit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px}
 .commit-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:32px;box-shadow:0 4px 16px rgba(15,23,42,.04);border-top:4px solid var(--primary)}
 .commit-card h3{font-size:1.2rem;font-weight:700;margin-bottom:12px}
@@ -168,13 +167,13 @@ footer{background:var(--card);border-top:1px solid var(--border);padding:40px 0;
   </div>
 </section>
 
-<!-- HERRAMIENTAS GRATUITAS INTERACTIVAS -->
+<!-- HERRAMIENTAS GRATUITAS INTERACTIVAS (CON NUEVO LOADOUT CHECK) -->
 <section class="sec" id="herramientas">
   <div class="wrap">
     <div class="sec-h">
       <span class="eyebrow">Utilidades Pro</span>
       <h2>Herramientas de Análisis Rápido</h2>
-      <p class="sub">Prueba nuestras calculadoras de utilidad diseñadas para optimizar tus partidas de torneo.</p>
+      <p class="sub">Prueba nuestras utilidades interactivas diseñadas para optimizar tus partidas de torneo.</p>
     </div>
     <div class="tools-grid">
       <div class="tool-box">
@@ -198,11 +197,21 @@ footer{background:var(--card);border-top:1px solid var(--border);padding:40px 0;
         </select>
         <div class="tool-out" id="warm-out">Rutina: 5 min Freebuild + 10 min Raider's Mechanics V4 (Código: 7959-5922-4775).</div>
       </div>
+      <div class="tool-box">
+        <h3>🎒 Evaluador de Inventario (Loadout)</h3>
+        <p style="color:var(--muted);font-size:.9rem;margin-bottom:12px">Comprueba si tu configuración de armas y curas es óptima para moving zones.</p>
+        <label style="font-size:.85rem;font-weight:700">Tipo de inventario habitual:</label>
+        <select id="load-type" class="tool-input" onchange="calcLoad()">
+          <option value="balanced">Escopeta + Subfusil + Movilidad + Minis + Botiquín</option>
+          <option value="heavy">Doble escopeta/arma + Poderes + Cero curas blancas</option>
+        </select>
+        <div class="tool-out" id="load-out">Evaluación: Inventario equilibrado óptimo para rotar y aguantar heal-off final.</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- CALCULADORA DE PLANES -->
+<!-- CALCULADORA DE PLANES CORREGIDA -->
 <section class="sec" id="calculadora" style="background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
   <div class="wrap">
     <div class="sec-h">
@@ -231,7 +240,7 @@ footer{background:var(--card);border-top:1px solid var(--border);padding:40px 0;
       <div class="calc-result">
         <div>
           <strong id="calc-title" style="font-size:1.1rem;display:block;margin-bottom:4px">Plan Recomendado: Plan Básico (15€)</strong>
-          <span id="calc-desc" style="font-size:.9rem;color:var(--muted)">Ideal para corregir tu última repetición de torneo en EU.</span>
+          <span id="calc-desc" style="font-size:.9rem;color:var(--muted)">Ideal para una revisión profunda de tu última repetición de torneo.</span>
         </div>
         <a id="calc-link" href="https://paypal.me/VyroEsports/15" target="_blank" class="btn-p">Contratar Plan Directo →</a>
       </div>
@@ -250,3 +259,377 @@ footer{background:var(--card);border-top:1px solid var(--border);padding:40px 0;
     <div class="guides-grid">
       <div class="guide-card">
         <div>
+          <span class="guide-badge">MACRO & DROP</span>
+          <h3>Control Absoluto del Early-Game</h3>
+          <p>Aprende a calcular los tiempos de planeo, optimizar rutas de cofre y asegurar loadouts competitivos sin arriesgar 50/50 innecesarios.</p>
+        </div>
+        <a href="#planes" style="color:var(--primary);font-weight:700;font-size:.9rem">Ver planes de VODs →</a>
+      </div>
+      <div class="guide-card">
+        <div>
+          <span class="guide-badge">MID-GAME & SURGE</span>
+          <h3>Gestión de Daño y Zonas</h3>
+          <p>Estrategias de posicionamiento central y cálculo de umbrales para superar el Storm Surge de forma limpia disparando a objetivos seguros.</p>
+        </div>
+        <a href="#planes" style="color:var(--primary);font-weight:700;font-size:.9rem">Ver planes de Live Coaching →</a>
+      </div>
+      <div class="guide-card">
+        <div>
+          <span class="guide-badge">ENDGAME & CAPAS</span>
+          <h3>Supervivencia en Moving Zones</h3>
+          <p>Dominio del lado muerto del círculo, reutilización inteligente de materiales en capa baja y timing perfecto para buscar refrescos.</p>
+        </div>
+        <a href="#planes" style="color:var(--primary);font-weight:700;font-size:.9rem">Ver Plan Elite Pro →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEST DE CONOCIMIENTO (10 PREGUNTAS) -->
+<section class="sec" id="test" style="background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="wrap">
+    <div class="sec-h">
+      <span class="eyebrow">Diagnóstico en tiempo real</span>
+      <h2>Test Competitivo (10 Preguntas Aleatorias)</h2>
+      <p class="sub">Cada vez que entras se generan 10 preguntas distintas del meta actual. Obtén tu nota del 1 al 10 y compártela en X.</p>
+    </div>
+    <div class="quiz-card">
+      <div id="q-box">
+        <div class="q-head">
+          <span class="q-badge" id="q-num">PREGUNTA 1 / 10</span>
+          <span style="font-size:.85rem;color:var(--muted);font-weight:600" id="q-cat">META</span>
+        </div>
+        <div class="q-title" id="q-txt"></div>
+        <div id="q-opts"></div>
+        <div class="exp" id="q-exp"></div>
+        <div style="margin-top:20px;text-align:right">
+          <button class="btn-p" id="q-next" style="display:none" onclick="nextQ()">Siguiente Pregunta →</button>
+        </div>
+      </div>
+      <div class="res" id="q-res">
+        <div class="nota"><b id="r-nota">8</b><span style="font-size:.75rem;color:var(--muted)">DE 10 PTS</span></div>
+        <div class="rango" id="r-rango">RANGO: UNREAL PRO</div>
+        <h3 id="r-tit" style="margin-bottom:8px;font-size:1.5rem"></h3>
+        <p id="r-desc" style="color:var(--muted);max-width:540px;margin:0 auto 28px"></p>
+        <div class="btns" style="justify-content:center">
+          <a id="r-share" href="#" target="_blank" class="btn-top-x">𝕏 Compartir mi nota en X</a>
+          <button class="btn-s" onclick="initQuiz()">Generar otras 10 preguntas ↺</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE PASO A PASO -->
+<section class="sec" id="proceso">
+  <div class="wrap">
+    <div class="sec-h">
+      <span class="eyebrow">Metodología Transparente</span>
+      <h2>¿Cómo trabajamos desde el primer día?</h2>
+      <p class="sub">Un proceso estructurado para garantizar resultados medibles en tu juego competitivo.</p>
+    </div>
+    <div class="timeline">
+      <div class="step-card">
+        <span class="step-num">PASO 01</span>
+        <h3>Selección de Plan</h3>
+        <p>Eliges tu tarifa con pago seguro por PayPal.</p>
+      </div>
+      <div class="step-card">
+        <span class="step-num">PASO 02</span>
+        <h3>Confirmación en X</h3>
+        <p>Me avisas por mensaje directo con tu usuario de Discord.</p>
+      </div>
+      <div class="step-card">
+        <span class="step-num">PASO 03</span>
+        <h3>Sesión Analítica</h3>
+        <p>Revisión de VODs o Live Coaching en directo.</p>
+      </div>
+      <div class="step-card">
+        <span class="step-num">PASO 04</span>
+        <h3>Evolución Constante</h3>
+        <p>Aplicación de rutinas y subida de rango en torneos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TABLA COMPARATIVA DE VALOR -->
+<section class="sec" style="background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="wrap">
+    <div class="sec-h">
+      <span class="eyebrow">Por qué elegirnos</span>
+      <h2>Entrenar a ciegas vs. Metodología Prama</h2>
+    </div>
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Característica</th>
+          <th>Jugador Estándar (Solo Ranked)</th>
+          <th>Academia Prama Pro</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Análisis de Errores</td>
+          <td>Por intuición (suponiendo qué falló)</td>
+          <td>Frame a frame analizando repetición real</td>
+        </tr>
+        <tr>
+          <td>Gestión de Storm Surge</td>
+          <td>Acierto aleatorio en peleas tardías</td>
+          <td>Control de umbrales y timings exactos</td>
+        </tr>
+        <tr>
+          <td>Acompañamiento en Torneo</td>
+          <td>Ninguno (solo en partida)</td>
+          <td>Live Coaching en directo por Discord</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- GARANTÍA Y COMPROMISO PRAMA (SIN TESTIMONIOS FALSOS) -->
+<section class="sec" id="resultados">
+  <div class="wrap">
+    <div class="sec-h">
+      <span class="eyebrow">Enfoque Profesional</span>
+      <h2>Nuestro Compromiso Contigo</h2>
+      <p class="sub">Sin rodeos ni falsas promesas. Esto es lo que obtienes al trabajar directamente con Prama.</p>
+    </div>
+    <div class="commit-grid">
+      <div class="commit-card">
+        <h3>🔍 Análisis 100% Personalizado</h3>
+        <p>No usamos plantillas genéricas. Cada VOD Review o sesión en directo se adapta al 100% a tus puntos débiles reales en lobbies competitivos.</p>
+      </div>
+      <div class="commit-card">
+        <h3>⚡ Enfoque Práctico y Directo</h3>
+        <p>Cero teoría vacía. Te decimos exactamente qué botones pulsar, dónde posicionarte y qué errores de rotación te están costando puntos de top.</p>
+      </div>
+      <div class="commit-card">
+        <h3>🤝 Comunicación Transparente</h3>
+        <p>Atención directa y cercana por Discord y X. Resolvemos tus dudas de planteamiento de torneo sin intermediarios.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANES Y TARIFAS -->
+<section class="sec" id="planes" style="background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="wrap">
+    <div class="sec-h">
+      <span class="eyebrow">Contratación directa</span>
+      <h2>Planes de Coaching Oficiales</h2>
+      <p class="sub">Elige tu tarifa con pago seguro por PayPal y confirma tu horario al instante por mensaje directo en X.</p>
+    </div>
+    <div class="plans">
+      <div class="plan">
+        <div>
+          <b>Plan Básico</b>
+          <div class="price">15€ <span>/ sesión</span></div>
+          <ul>
+            <li>VOD Review completo de torneo (Cualquier región)</li>
+            <li>Detección de errores de posicionamiento y mats</li>
+            <li>Resumen escrito con prioridades de mejora</li>
+          </ul>
+        </div>
+        <div>
+          <a href="https://paypal.me/VyroEsports/15" target="_blank" class="btn-pay">1. Pagar 15€ en PayPal</a>
+          <a href="https://x.com/Pramaqy?text=Hola%20Prama,%20acabo%20de%20pagar%20el%20Plan%20B%C3%A1sico%20(15%E2%82%AC)%20en%20PayPal.%20Mi%20Discord%20es:" target="_blank" class="btn-dm">2. Confirmar pago en X (@Pramaqy)</a>
+        </div>
+      </div>
+      <div class="plan top">
+        <span class="top-badge">MÁS ELEGIDO</span>
+        <div>
+          <b style="color:var(--primary)">Plan Intermedio</b>
+          <div class="price">45€ <span>/ pack</span></div>
+          <ul>
+            <li>Live Coaching (NAC/BR/NAW/ASIA) o Pack VODs (EU/ME)</li>
+            <li>Estrategia personalizada de rotaciones y Endgame</li>
+            <li>Seguimiento y ajustes durante la semana</li>
+          </ul>
+        </div>
+        <div>
+          <a href="https://paypal.me/VyroEsports/45" target="_blank" class="btn-pay">1. Pagar 45€ en PayPal</a>
+          <a href="https://x.com/Pramaqy?text=Hola%20Prama,%20acabo%20de%20pagar%20el%20Plan%20Intermedio%20(45%E2%82%AC)%20en%20PayPal.%20Mi%20Discord%20es:" target="_blank" class="btn-dm">2. Confirmar pago en X (@Pramaqy)</a>
+        </div>
+      </div>
+      <div class="plan">
+        <div>
+          <b>Plan Elite Pro</b>
+          <div class="price">75€ <span>/ mensual</span></div>
+          <ul>
+            <li>Acompañamiento completo en torneos oficiales del mes</li>
+            <li>Estudio profundo de Drop-Spots y planes anti-contest</li>
+            <li>Soporte prioritario diario por Discord y X</li>
+          </ul>
+        </div>
+        <div>
+          <a href="https://paypal.me/VyroEsports/75" target="_blank" class="btn-pay">1. Pagar 75€ en PayPal</a>
+          <a href="https://x.com/Pramaqy?text=Hola%20Prama,%20acabo%20de%20pagar%20el%20Plan%20Elite%20Pro%20(75%E2%82%AC)%20en%20PayPal.%20Mi%20Discord%20es:" target="_blank" class="btn-dm">2. Confirmar pago en X (@Pramaqy)</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ DESPLEGABLE -->
+<section class="sec" id="faq">
+  <div class="wrap">
+    <div class="sec-h" style="text-align:center;margin:0 auto 48px">
+      <span class="eyebrow">Resolución de dudas</span>
+      <h2>Preguntas Frecuentes (FAQ)</h2>
+      <p class="sub">Todo lo que necesitas saber antes de empezar a trabajar juntos.</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">¿Cómo se envían las repeticiones para la VOD Review? <span>+</span></div>
+        <div class="faq-a">Puedes pasarme el archivo de repetición de Fortnite directamente por Discord o subir la partida completa a un enlace de YouTube privado o público. Lo analizamos frame a frame.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">¿Por dónde se realiza el Live Coaching en directo? <span>+</span></div>
+        <div class="faq-a">Se realiza mediante llamada de voz privada en Discord mientras juegas tus torneos en NAC, BR, NAW, Oceanía o Asia, dándote instrucciones limpias de rotación en tiempo real.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">¿Qué pasa después de realizar el pago en PayPal? <span>+</span></div>
+        <div class="faq-a">Al pulsar el segundo botón de cada plan, se abrirá tu X con un mensaje preescrito para @Pramaqy. Me lo envías con tu usuario de Discord y cuadramos la hora exacta al instante.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<a href="https://x.com/Pramaqy" target="_blank" class="float-btn">💬 Escríbeme en X</a>
+
+<footer>
+  <div class="wrap"><strong>PRAMA</strong> — Fortnite Competitive Coaching & Analytics • PayPal: <strong>paypal.me/VyroEsports</strong> • X: <strong>@Pramaqy</strong></div>
+</footer>
+
+<script>
+// HERRAMIENTA STORM SURGE
+function calcSurge(){
+  const z = document.getElementById('surge-zone').value;
+  const out = document.getElementById('surge-out');
+  if(z === '120') out.textContent = "Resultado: Umbral de Zona 3. Necesitáis 1 bala de fusil pesado o 2 sprays limpios.";
+  else if(z === '150') out.textContent = "Resultado: Umbral de Zona 4. Buscad daño a distancia sobre equipos en rotación tardía.";
+  else out.textContent = "Resultado: Umbral de Zona 5. Densidad alta; priorizad tiros rápidos con sniper o fusil sin exponeros.";
+}
+
+// HERRAMIENTA WARM-UP
+function calcWarm(){
+  const t = document.getElementById('warm-time').value;
+  const out = document.getElementById('warm-out');
+  if(t === '15') out.textContent = "Rutina Express: 5 min Aim Vials + 10 min Raider's Mechanics V4 (7959-5922-4775).";
+  else out.textContent = "Rutina Completa: 10 min Aim Duel + 10 min Freebuild Edit + 10 min Realistics 2v2.";
+}
+
+// NUEVA HERRAMIENTA: LOADOUT CHECK
+function calcLoad(){
+  const l = document.getElementById('load-type').value;
+  const out = document.getElementById('load-out');
+  if(l === 'balanced') out.textContent = "Evaluación: Inventario equilibrado óptimo para rotar y aguantar heal-off final.";
+  else out.textContent = "Alerta: Cero curas blancas te dejará vendido en moving zones avanzadas contra la tormenta.";
+}
+
+// CALCULADORA INTELIGENTE CORREGIDA
+function updateCalc(){
+  const reg = document.getElementById('calc-region').value;
+  const goal = document.getElementById('calc-goal').value;
+  const title = document.getElementById('calc-title');
+  const desc = document.getElementById('calc-desc');
+  const link = document.getElementById('calc-link');
+
+  if(goal === 'vod'){
+    title.textContent = "Plan Recomendado: Plan Básico (15€)";
+    desc.textContent = "Ideal para una revisión profunda de tu última repetición de torneo.";
+    link.href = "https://paypal.me/VyroEsports/15";
+    link.textContent = "Contratar Plan Básico (15€) →";
+  }else if(goal === 'pack'){
+    title.textContent = "Plan Recomendado: Plan Intermedio (45€)";
+    desc.textContent = reg === 'eu' ? "Pack de VOD Reviews avanzadas para dominar moving zones." : "Live coaching completo en directo durante tus torneos.";
+    link.href = "https://paypal.me/VyroEsports/45";
+    link.textContent = "Contratar Plan Intermedio (45€) →";
+  }else{
+    title.textContent = "Plan Recomendado: Plan Elite Pro (75€/mes)";
+    desc.textContent = "Acompañamiento mensual completo, estudio de drops y soporte diario.";
+    link.href = "https://paypal.me/VyroEsports/75";
+    link.textContent = "Contratar Plan Elite Pro (75€/mes) →";
+  }
+}
+
+// FAQ ACORDEÓN
+function toggleFaq(el){
+  const ans = el.nextElementSibling;
+  const isOpen = ans.style.display === 'block';
+  document.querySelectorAll('.faq-a').forEach(a => a.style.display = 'none');
+  document.querySelectorAll('.faq-q span').forEach(s => s.textContent = '+');
+  if(!isOpen){
+    ans.style.display = 'block';
+    el.querySelector('span').textContent = '-';
+  }
+}
+
+// TEST COMPETITIVO ALEATORIO (10 PREGUNTAS)
+const DB=[
+{c:"META ACTUAL",q:"En el meta actual con cofres autorecargables y sin barras de oro en partida, ¿cómo optimizas tu early-game?",o:["Aseguras tu POI limpio para aprovechar recargas sin arriesgar 50/50 por máquinas.","Gastas toda tu munición al caer.","Ignoras los cofres y vas directo a centro de zona."],a:0,e:"Controlar tu drop limpio te garantiza recursos constantes sin depender de compras."},
+{c:"SPRITES",q:"¿Cuál es el mejor uso de los Sprites en torneo?",o:["Ignorarlos siempre.","Usarlos en early/mid-game para localizar cofres extra y mejorar loot antes de zona 3.","Llevarlos en endgame en lugar de curas."],a:1,e:"Te dan ventaja de loot sin ocupar slots vitales en moving zones."},
+{c:"ENDGAME",q:"Tienes 320 de madera en Moving Zone 4 y la zona sube a una colina con 3 equipos. ¿Qué haces?",o:["Subir con movilidad a pelear altura.","Rotar por capa baja pegado al borde muerto reutilizando estructuras.","Quedarte en tormenta curándote."],a:1,e:"Sin mats para aguantar arriba, capa baja asegura puntos de posición."},
+{c:"STORM SURGE",q:"Faltan 25s para Surge, vas 130 de daño abajo y estás boxed en centro. ¿Jugada?",o:["Abrir ventana y coordinar sprays sobre rotaciones tardías.","Rushear cuerpo a cuerpo al equipo de al lado.","Huir al borde de tormenta."],a:0,e:"Necesitas daño seguro a distancia sin entrar en un 50/50."},
+{c:"EARLY GAME",q:"El rival cae antes en tu edificio y coge escopeta. ¿Qué haces?",o:["Forzar el pico contra su pared.","Romper contacto, farmear 150 mats fuera y re-enganchar con arma.","Quedarte quieto."],a:1,e:"Nunca se fuerza un 50/50 a pico contra escopeta en torneo."},
+{c:"CIERRE FINAL",q:"Quedáis 5 vivos: vosotros en mid-ground con metal, un dúo arriba sin movilidad y un solo abajo. ¿Prioridad?",o:["Aguantar techo de metal y cortar la caída del equipo de altura.","Bajar a buscar al solo por 1 kill extra.","Editar hacia abajo."],a:0,e:"Mantener mid-ground y cortar altura asegura la victoria."},
+{c:"BOX-FIGHTING",q:"En un lobby de 45 vivos en Zona 4, ¿cuánto debe durar como máximo un fight?",o:["15-20 segundos; si no hay knock claro, haces disengage.","Hasta que muera uno sin importar el tiempo.","Gastar 1.500 mats encerrando al rival."],a:0,e:"Alargar peleas atrae third-parties de todo el lobby."},
+{c:"ROTACIONES",q:"¿Qué es el 'lado muerto' (dead side) de una zona?",o:["La franja con menos densidad de equipos según autobús y zonas previas.","Caminar por tormenta de 10 ticks.","El centro exacto del círculo."],a:0,e:"Rotar por el lado muerto minimiza el focus recibido."},
+{c:"SINERGIA DÚO",q:"En un tarp intenso de Zona 6, ¿qué debe comunicar el Fragger al IGL?",o:["Cantidad exacta de mats, enemigos pegados y opciones de refresh.","Gritar cada vez que pierde 20 de escudo.","Cambiar de capa sin avisar."],a:1,e:"La info limpia permite al IGL decidir al instante."},
+{c:"MATERIALES",q:"Tienes 400 madera, 300 piedra y 500 metal para tarpear en Zona 5. ¿Qué gastas primero?",o:["Metal primero.","Madera y piedra para avanzar, guardando metal para cierres finales.","Mezclar todo al azar."],a:1,e:"El metal aguanta mucho más el focus de las últimas zonas."},
+{c:"ALTURA",q:"¿Por qué pierden la altura (High Ground) muchos dúos en Moving Zones?",o:["Avanzan sin vigilar espaldas ni presionar a equipos con movilidad abajo.","Disparan hacia abajo.","Conectan con mid-ground."],a:0,e:"Si no presionas abajo, te hacen retake gratis."},
+{c:"CURAS",q:"Tienes 65 de vida blanca, 2 botiquines y 6 minis en Zona 5. ¿Prioridad?",o:["Tirar minis (2s) y moverte con zona antes que quedarte en tormenta.","Tirar botiquín largo dentro de tormenta.","Salir a pelear."],a:0,e:"Los minis dan escudo rápido sin atraparte en tormenta."},
+{c:"MENTALIDAD",q:"Llevas 2 partidas malas seguidas en torneo. ¿Ajuste correcto?",o:["Pausar 2 minutos para resetear mente y jugar sólido a endgame.","Cambiar de drop cada partida.","Rushear a todo el mundo."],a:0,e:"Dos buenos endgames seguidos te devuelven al top."},
+{c:"MECÁNICA",q:"¿Por qué es clave el 'Right-Hand Peek' en box-fights?",o:["La cámara está en el hombro derecho y disparas exponiendo menos cuerpo.","Hace un 20% más de daño.","Bloquea ediciones rivales."],a:0,e:"Permite hacer daño sin recibir tiros de vuelta."},
+{c:"SUPERVIVENCIA",q:"Cae tu compañero en mid-game quedando 35 equipos. ¿Jugada como Solo?",o:["Jugar capas bajas sin pelear para rascar puntos de top.","Entrar 1v2 a vengarle.","Salir de la partida."],a:0,e:"Un solo pasivo suma muchos puntos de posición."}
+];
+let qs=[],idx=0,pts=0;
+function initQuiz(){
+  qs=[...DB].sort(()=>Math.random()-.5).slice(0,10);
+  idx=0;pts=0;
+  document.getElementById('q-res').style.display='none';
+  document.getElementById('q-box').style.display='block';
+  showQ();
+}
+function showQ(){
+  const d=qs[idx];
+  document.getElementById('q-num').textContent=`PREGUNTA ${idx+1} / 10`;
+  document.getElementById('q-cat').textContent=d.c;
+  document.getElementById('q-txt').textContent=d.q;
+  document.getElementById('q-opts').innerHTML=d.o.map((t,i)=>`<button class="opt" onclick="ans(${i})"><span style="background:var(--bg);border:1px solid #cbd5e1;padding:4px 10px;border-radius:6px;font-weight:700">${['A','B','C'][i]}</span><span>${t}</span></button>`).join('');
+  document.getElementById('q-exp').style.display='none';
+  document.getElementById('q-next').style.display='none';
+}
+function ans(i){
+  const d=qs[idx],bs=document.querySelectorAll('.opt'),ex=document.getElementById('q-exp');
+  bs.forEach(b=>b.disabled=true);
+  ex.style.display='block';
+  if(i===d.a){pts++;bs[i].classList.add('ok');ex.style.background='#ecfdf5';ex.style.color='#065f46';ex.innerHTML='<strong>✓ Correcto:</strong> '+d.e;}
+  else{bs[i].classList.add('no');bs[d.a].classList.add('ok');ex.style.background='#fef2f2';ex.style.color='#991b1b';ex.innerHTML='<strong>✕ Incorrecto:</strong> '+d.e;}
+  const nb=document.getElementById('q-next');
+  nb.style.display='inline-block';
+  nb.textContent=idx<9?'Siguiente Pregunta →':'Ver mi nota final (1-10) →';
+}
+function nextQ(){if(idx<9){idx++;showQ();}else{endQ();}}
+function endQ(){
+  document.getElementById('q-box').style.display='none';
+  document.getElementById('q-res').style.display='block';
+  const n=Math.max(1,pts);
+  document.getElementById('r-nota').textContent=n;
+  let rk="RANGO: OPEN / EN DESARROLLO",ti="Necesitas estructurar tu macro",dc="Juegas por instinto. Un VOD Review corregirá tus errores repetitivos de torneo.";
+  if(n>=9){rk="RANGO: TIER-1 / UNREAL PRO";ti="Mentalidad de Finalista FNCS";dc="Dominas el meta actual, rotaciones y economía de torneo de forma sobresaliente.";}
+  else if(n>=7){rk="RANGO: CHAMPION / SEMI-PRO";ti="Muy buena base competitiva";dc="Entiendes las rotaciones, pero pulir detalles de mid-game te dará más premios.";}
+  else if(n>=5){rk="RANGO: ELITE / CONTENDER";ti="Buen potencial competitivo";dc="Tienes nociones claras, pero pierdes puntos en gestión de materiales y coberturas.";}
+  document.getElementById('r-rango').textContent=rk;
+  document.getElementById('r-tit').textContent=ti;
+  document.getElementById('r-desc').textContent=dc;
+  const tw=encodeURIComponent(`¡He sacado un ${n}/10 (${rk}) en el test competitivo de Fortnite de @Pramaqy! 🏆\n\nPon a prueba tu macro aquí: https://iprama09-design.github.io/miweb/`);
+  document.getElementById('r-share').href=`https://twitter.com/intent/tweet?text=${tw}`;
+}
+initQuiz();
+</script>
+</body>
+</html>
