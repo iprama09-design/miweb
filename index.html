@@ -3,172 +3,615 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PRAMA — Fortnite Competitive Coaching & Esports Analytics</title>
-    <meta name="description" content="Coaching competitivo de Fortnite de alto rendimiento. Análisis de VODs, macro-estrategia, drop-spots y live coaching de torneos con Prama.">
-    
+    <title>Entrenador Prama | Elite Fortnite Coaching</title>
     <!-- NO BORRAR: Etiqueta de verificación de Google Search Console -->
     <meta name="google-site-verification" content="pbaWqIfp2c-U7i4iu3zcZKQaEkeE2wxhrs20Dia5HU" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-main: #060608;
-            --bg-elevated: #0d0e12;
-            --bg-card: #12141a;
-            --border-subtle: #1f222c;
-            --border-strong: #2e3342;
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
-            --text-muted: #64748b;
-            --accent-red: #ff3b4e;
-            --accent-red-hover: #e02d3f;
-            --accent-emerald: #10b981;
+            --bg-base: #05070d;
+            --bg-card: #0d1322;
+            --accent-cyan: #00f0ff;
+            --accent-purple: #9d4edd;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
         }
 
-        html, body {
-            background-color: var(--bg-main);
-            color: var(--text-primary);
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            line-height: 1.6;
-            overflow-x: hidden;
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            min-height: 100vh;
         }
 
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        .container {
-            max-width: 1180px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* NAVBAR */
+        /* NAVEGACIÓN Y MENÚ */
         nav {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: rgba(6, 6, 8, 0.95);
-            backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border-subtle);
-            padding: 16px 0;
-        }
-
-        .nav-inner {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: #020408;
+            padding: 20px 40px;
+            border-bottom: 2px solid rgba(0, 240, 255, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
-        .brand {
-            font-family: 'Syne', sans-serif;
-            font-weight: 800;
-            font-size: 1.35rem;
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: var(--accent-cyan);
+            text-decoration: none;
+            letter-spacing: 1.5px;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .btn-top-contact {
+            background: rgba(157, 78, 221, 0.15);
+            color: #d8b4fe;
+            border: 1px solid var(--accent-purple);
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-top-contact:hover {
+            background: var(--accent-purple);
+            color: #fff;
+            box-shadow: 0 0 15px var(--accent-purple);
+        }
+
+        .menu-btn {
+            font-size: 1.6rem;
+            cursor: pointer;
+            color: var(--accent-cyan);
+            background: rgba(0, 240, 255, 0.1);
+            border: 1px solid var(--accent-cyan);
+            padding: 5px 14px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-btn:hover {
+            background: var(--accent-cyan);
+            color: #000;
+            box-shadow: 0 0 15px var(--accent-cyan);
+        }
+
+        /* PANEL DESPLEGABLE */
+        .dropdown {
+            position: fixed;
+            top: 0;
+            right: -360px;
+            width: 330px;
+            height: 100vh;
+            background: #090e18;
+            border-left: 2px solid var(--accent-cyan);
+            display: flex;
+            flex-direction: column;
+            padding: 30px 20px;
+            transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+            z-index: 1001;
+            box-shadow: -20px 0 50px rgba(0, 0, 0, 0.9);
+            overflow-y: auto;
+        }
+
+        .dropdown.active {
+            right: 0;
+        }
+
+        .menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #1e293b;
+            padding-bottom: 10px;
+        }
+
+        .menu-header h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--accent-cyan);
+            font-size: 1rem;
+        }
+
+        .close-menu {
+            background: none;
+            border: none;
+            color: #ff4d4d;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .dropdown a, .dropdown button.menu-link-btn {
+            color: var(--text-muted);
+            text-decoration: none;
+            background: none;
+            border: none;
+            width: 100%;
+            text-align: left;
+            padding: 10px 12px;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: block;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+        }
+
+        .dropdown a:hover, .dropdown button.menu-link-btn:hover {
+            color: var(--accent-cyan);
+            background: rgba(0, 240, 255, 0.08);
+            padding-left: 15px;
+        }
+
+        .menu-section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.75rem;
+            color: var(--accent-purple);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin: 15px 0 5px 8px;
+        }
+
+        /* SECCIÓN HERO */
+        .hero {
+            max-width: 900px;
+            margin: 60px auto 40px;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(0, 240, 255, 0.1);
+            color: var(--accent-cyan);
+            border: 1px solid var(--accent-cyan);
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.2rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff 30%, var(--accent-cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+        }
+
+        .hero-story {
+            background: var(--bg-card);
+            border: 1px solid #1e293b;
+            border-left: 4px solid var(--accent-cyan);
+            padding: 35px;
+            border-radius: 14px;
+            text-align: left;
+            margin-top: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+        }
+
+        .hero-story h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--accent-cyan);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .hero-story p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            font-size: 1.05rem;
+            margin-bottom: 15px;
+        }
+
+        .notice-box {
+            background: rgba(0, 240, 255, 0.05);
+            border: 1px dashed var(--accent-cyan);
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            color: #e2e8f0;
+            font-size: 0.95rem;
+        }
+
+        .notice-box a {
+            color: var(--accent-cyan);
+            text-decoration: underline;
+            font-weight: bold;
+        }
+
+        /* MINI JUEGO TÁCTICO DE DÚOS */
+        .minigame-container {
+            background: linear-gradient(145deg, #0d1322, #070a14);
+            border: 2px solid var(--accent-purple);
+            border-radius: 16px;
+            padding: 30px;
+            margin: 50px auto;
+            max-width: 900px;
+            box-shadow: 0 0 30px rgba(157, 78, 221, 0.2);
+            text-align: left;
+        }
+
+        .minigame-container h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: #d8b4fe;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        .brand-tag {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
-            background: rgba(255, 59, 78, 0.14);
-            color: var(--accent-red);
-            border: 1px solid rgba(255, 59, 78, 0.35);
-            padding: 2px 8px;
-            border-radius: 4px;
+        .minigame-container p.scenario {
+            color: #fff;
+            font-size: 1.1rem;
+            margin: 20px 0;
+            background: rgba(0,0,0,0.3);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid var(--accent-cyan);
         }
 
-        .nav-links {
-            display: flex;
-            gap: 32px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--text-secondary);
+        .mg-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
         }
 
-        .nav-links a:hover {
-            color: var(--text-primary);
-        }
-
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .btn-nav-cta {
-            background: var(--text-primary);
-            color: var(--bg-main);
-            padding: 9px 18px;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            font-weight: 700;
-        }
-
-        .menu-trigger {
-            background: var(--bg-card);
-            border: 1px solid var(--border-strong);
-            color: var(--text-primary);
-            padding: 8px 14px;
-            border-radius: 6px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
-            font-weight: 600;
+        .mg-btn {
+            background: #1e1b4b;
+            color: #e0e7ff;
+            border: 1px solid #6366f1;
+            padding: 14px;
+            border-radius: 8px;
             cursor: pointer;
+            font-weight: 600;
+            text-align: left;
+            transition: all 0.3s ease;
         }
 
-        /* DRAWER LATERAL */
-        .drawer-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 1001;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
+        .mg-btn:hover {
+            background: var(--accent-purple);
+            color: #fff;
+            border-color: #fff;
+            box-shadow: 0 0 15px var(--accent-purple);
         }
 
-        .drawer-overlay.active {
-            opacity: 1;
-            pointer-events: auto;
+        #mg-result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: 600;
+            display: none;
         }
 
-        .drawer {
-            position: fixed;
-            top: 0;
-            right: -380px;
-            width: 360px;
-            max-width: 90vw;
-            height: 100vh;
-            background: var(--bg-elevated);
-            border-left: 1px solid var(--border-strong);
-            z-index: 1002;
-            padding: 28px 24px;
+        /* CONTENEDOR GENERAL DE PLANES */
+        .container {
+            max-width: 1000px;
+            margin: 60px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid #1e293b;
+            border-radius: 18px;
+            padding: 35px 25px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
             display: flex;
             flex-direction: column;
-            overflow-y: auto;
-            transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .drawer.active {
-            right: 0;
-        }
-
-        .drawer-header {
-            display: flex;
             justify-content: space-between;
-            align-items: center;
-            padding-bottom: 18px;
-            border-bottom: 1px solid var(--border-
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-cyan);
+        }
+
+        .card.featured {
+            border-color: var(--accent-purple);
+            background: #130e22;
+        }
+
+        .price {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.8rem;
+            font-weight: bold;
+            color: var(--accent-cyan);
+            margin: 20px 0;
+        }
+
+        .card.featured .price {
+            color: #d8b4fe;
+        }
+
+        ul.plan-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 30px;
+            text-align: left;
+            color: var(--text-muted);
+        }
+
+        ul.plan-list li {
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn {
+            display: block;
+            background: var(--accent-cyan);
+            color: #000000;
+            padding: 12px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            box-shadow: 0 0 20px var(--accent-cyan);
+        }
+
+        .btn-register {
+            background: rgba(157, 78, 221, 0.2);
+            color: #d8b4fe;
+            border: 1px solid var(--accent-purple);
+        }
+
+        .btn-register:hover {
+            background: var(--accent-purple);
+            color: #fff;
+            box-shadow: 0 0 15px var(--accent-purple);
+        }
+
+        .card.featured .btn {
+            background: var(--accent-purple);
+            color: #ffffff;
+        }
+
+        .card.featured .btn:hover {
+            box-shadow: 0 0 20px var(--accent-purple);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-muted);
+            border-top: 1px solid #1e293b;
+            margin-top: 60px;
+            background: #020408;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA SUPERIOR -->
+    <nav>
+        <a href="#inicio" class="logo">ENTRENADOR PRAMA</a>
+        <div class="nav-right">
+            <a href="https://x.com/Pramaqy" target="_blank" class="btn-top-contact">💬 Contáctanos</a>
+            <div class="menu-btn" onclick="toggleMenu()">☰</div>
+        </div>
+    </nav>
+
+    <!-- MENÚ DESPLEGABLE AMPLIADO Y LIMPIO -->
+    <div class="dropdown" id="myDropdown">
+        <div class="menu-header">
+            <h3>MENÚ PROFESIONAL</h3>
+            <button class="close-menu" onclick="toggleMenu()">✕</button>
+        </div>
+
+        <div class="menu-section-title">Navegación General</div>
+        <a href="#inicio" onclick="toggleMenu()">🏠 Inicio / Historia de Prama</a>
+        <a href="#planes" onclick="toggleMenu()">💎 Planes y Servicios de Coaching</a>
+        <a href="https://x.com/Pramaqy" target="_blank" onclick="toggleMenu()">💬 Contáctanos (Twitter Oficial)</a>
+
+        <div class="menu-section-title">Pasarelas y Pagos (PayPal)</div>
+        <a href="https://paypal.me/VyroEsports" target="_blank" onclick="toggleMenu()">💳 Pagar Plan Básico (15€)</a>
+        <a href="https://paypal.me/VyroEsports" target="_blank" onclick="toggleMenu()">🔥 Pagar Plan Intermedio (45€)</a>
+        <a href="https://paypal.me/VyroEsports" target="_blank" onclick="toggleMenu()">⚡ Pagar Plan Elite Pro (75€)</a>
+        <a href="https://paypal.me/VyroEsports" target="_blank" onclick="toggleMenu()">🔗 Enlace General PayPal (VyroEsports)</a>
+
+        <div class="menu-section-title">Especialidades Competitivas</div>
+        <a href="#planes" onclick="toggleMenu()">🎯 VOD Review & Análisis Profundo</a>
+        <a href="#planes" onclick="toggleMenu()">🛠️ Configuración de Aim y Settings</a>
+        <a href="#planes" onclick="toggleMenu()">🏰 Dominio de Box-Fighting</a>
+        <a href="#planes" onclick="toggleMenu()">🗺️ Rotaciones y Endgame (FNCS)</a>
+        <a href="#planes" onclick="toggleMenu()">📊 Estudio de Drop-Spots</a>
+        <button class="menu-link-btn" onclick="toggleMenu(); scrollToMinigame()">👥 Sinergia y Táctica de Dúos (MiniJuego)</button>
+
+        <div class="menu-section-title">Soporte y Registro de Compra</div>
+        <a href="https://x.com/Pramaqy" target="_blank" onclick="toggleMenu()">📝 Enviar Comprobante de Pago</a>
+        <a href="https://x.com/Pramaqy" target="_blank" onclick="toggleMenu()">🐦 Twitter Oficial (@Pramaqy)</a>
+        <a href="https://x.com/Pramaqy" target="_blank" onclick="toggleMenu()">❓ Ayuda y Guía de Contratación</a>
+    </div>
+
+    <!-- SECCIÓN INICIO CON HISTORIA -->
+    <div class="hero" id="inicio">
+        <span class="hero-badge">Fortnite Competitive Coach</span>
+        <h1>Entrenador Prama</h1>
+        
+        <div class="hero-story">
+            <h3>Bienvenido a la Élite Competitiva</h3>
+            <p>Soy <strong>Prama</strong>, coach profesional de Fortnite. Mi enfoque se centra en exprimir al máximo el talento de cada jugador y equipo, analizando cada enfrentamiento bajo la lupa táctica más exigente.</p>
+            <p>Desde el control absoluto de los enfrentamientos de box-fighting hasta la toma de decisiones milimétrica en los Endgames de torneos regionales (FNCS y Cash Cups), mi misión es llevarte directamente al siguiente nivel competitivo. Si buscas resultados reales y dejar de cometer errores evitables, estás en el lugar indicado.</p>
+            
+            <div class="notice-box">
+                ⚡ <strong>¿Has realizado una compra?</strong> Tras abonar tu plan en PayPal, haz clic en el botón <em>"Registrar mi contacto"</em> de abajo o <a href="https://x.com/Pramaqy" target="_blank">escríbeme directamente por Twitter</a> para que me llegue tu aviso y coordinemos tu sesión al instante.
+            </div>
+        </div>
+    </div>
+
+    <!-- MINI JUEGO TÁCTICO DE DÚOS -->
+    <div class="container" id="tacticas-duos">
+        <div class="minigame-container">
+            <h3>👥 Simulador Táctico de Dúos (Mini-Juego Prama)</h3>
+            <p class="scenario" id="mg-scenario">Situación de Torneo (Fncs Mov 4): Tu dúo se ha quedado sin materiales de construcción rápido y la zona se mueve hacia una colina alta llena de contrarios. ¿Cuál es tu llamada táctica?</p>
+            
+            <div class="mg-options" id="mg-options-box">
+                <button class="mg-btn" onclick="evaluarJugada(1)">A) Lanzar crash pads en línea recta hacia la altura y buscar frags de refresco rápido.</button>
+                <button class="mg-btn" onclick="evaluarJugada(2)">B) Jugar por capas bajas, tunelar con madera sobrante y buscar un hueco lateral seguro.</button>
+            </div>
+            
+            <div id="mg-result"></div>
+        </div>
+    </div>
+
+    <!-- SECCIÓN PLANES Y SERVICIOS AMPLIADA -->
+    <div class="container" id="planes">
+        <h2 class="section-title">Planes y Servicios</h2>
+        <p class="section-subtitle">Escoge tu modalidad de entrenamiento y da el salto definitivo en competitivo.</p>
+
+        <div class="grid">
+            <!-- Plan Básico -->
+            <div class="card">
+                <div>
+                    <h3>Plan Básico</h3>
+                    <div class="price">15€</div>
+                    <ul class="plan-list">
+                        <li>✓ Revisión exhaustiva de 1 VOD</li>
+                        <li>✓ Corrección táctica de box-fighting</li>
+                        <li>✓ Pautas de early y mid-game</li>
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <a href="https://paypal.me/VyroEsports" class="btn" target="_blank">1. Pagar (15€)</a>
+                    <a href="https://x.com/Pramaqy?text=Hola%20Prama,%20acabo%20de%20pagar%20el%20Plan%20Básico%20(15€).%20Mi%20contacto%20es:" class="btn btn-register" target="_blank">2. Registrar mi Contacto</a>
+                </div>
+            </div>
+
+            <!-- Plan Intermedio -->
+            <div class="card featured">
+                <div>
+                    <span style="background:var(--accent-purple); color:#fff; padding:4px 10px; border-radius:6px; font-size:0.75rem; font-weight:bold;">MÁS POPULAR</span>
+                    <h3 style="margin-top:10px;">Plan Intermedio</h3>
+                    <div class="price">45€</div>
+                    <ul class="plan-list">
+                        <li>✓ Análisis de partidas en directo</li>
+                        <li>✓ Rutinas avanzadas de aim y edición</li>
+                        <li>✓ Estrategias de rotación y Endgame</li>
+                        <li>✓ Ajustes y feedback semanal</li>
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <a href="https://paypal.me/VyroEsports" class="btn" target="_blank">1. Pagar (45€)</a>
+                    <a href="https://x.com/Pramaqy?text=Hola%20Prama,%20acabo%20de%20pagar%20el%20Plan%20Intermedio%20(45€).%20Mi%20contacto%20es:" class="btn btn-register" target="_blank">2. Registrar mi Contacto</a>
+                </div>
+            </div>
+
+            <!-- Plan Elite Pro -->
+            <div class="card">
+                <div>
+                    <h3>Plan Elite Pro</h3>
+                    <div class="price">75€</div>
+                    <ul class="plan-list">
+                        <li>✓ Acompañamiento en directo en torneos</li>
+                        <li>✓ Estudio profundo de Drop-Spots</li>
+                        <li>✓ Seguimiento estadístico continuo</li>
+                        <li>✓ Psicología y mentalidad de Dúo/Solo</li>
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <a href="https://paypal.me/VyroEsports" class="btn" target="_blank">1. Pagar (75€)</a>
+                    <a href="https://x.com/Pramaqy?text=Hola%20Prama,%20acabo%20de%20pagar%20el%20Plan%20Elite%20Pro%20(75€).%20Mi%20contacto%20es:" class="btn btn-register" target="_blank">2. Registrar mi Contacto</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <p><strong>Entrenador Prama</strong> • Coaching Profesional de Fortnite.</p>
+        <p style="margin-top: 8px;">Pagos seguros verificados mediante PayPal oficial: <strong>paypal.me/VyroEsports</strong></p>
+        <p style="margin-top: 15px; color: #475569;">&copy; 2026 Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- SCRIPT DEL MENÚ Y MINIJUEGO -->
+    <script>
+        function toggleMenu() {
+            document.getElementById('myDropdown').classList.toggle('active');
+        }
+
+        function scrollToMinigame() {
+            const el = document.getElementById('tacticas-duos');
+            el.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function evaluarJugada(opcion) {
+            const resultBox = document.getElementById('mg-result');
+            resultBox.style.display = 'block';
+            if(opcion === 1) {
+                resultBox.style.background = 'rgba(255, 77, 77, 0.15)';
+                resultBox.style.border = '1px solid #ff4d4d';
+                resultBox.style.color = '#ff9999';
+                resultBox.innerHTML = '❌ <strong>¡Error crítico de macro!</strong> Lanzarse sin cobertura alta en moving zones te expone al focus de los lobbies altos. ¡Necesitas un VOD Review con Prama urgente para corregir esto!';
+            } else {
+                resultBox.style.background = 'rgba(0, 240, 255, 0.15)';
+                resultBox.style.border = '1px solid var(--accent-cyan)';
+                resultBox.style.color = '#a5f3fc';
+                resultBox.innerHTML = '✅ <strong>¡Excelente decisión táctica!</strong> Conservar recursos y buscar capas seguras asegura puntos de posición vitales. ¡Tienes madera de clasificado a FNCS!';
+            }
+        }
+    </script>
+</body>
+</html>
