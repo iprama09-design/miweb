@@ -1,1239 +1,423 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PRAMA — Fortnite Competitive Coaching & Analytics</title>
-    <meta name="description" content="Academia de coaching competitivo de Fortnite por Prama. VOD Reviews en EU/ME y Live Coaching de torneos en NAC, BR, NAW, OCE y ASIA.">
-    
-    <!-- Etiqueta de verificación de Google Search Console intacta -->
-    <meta name="google-site-verification" content="pbaWqIfp2c-U7i4iu3zcZKQaEkeE2wxhrs20Dia5HU" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
-
-    <style>
-        :root {
-            --bg-page: #f8fafc;
-            --bg-surface: #ffffff;
-            --bg-subtle: #f1f5f9;
-            --text-main: #0f172a;
-            --text-secondary: #475569;
-            --text-muted: #64748b;
-            --border-light: #e2e8f0;
-            --border-medium: #cbd5e1;
-            --brand-primary: #2563eb;
-            --brand-hover: #1d4ed8;
-            --brand-soft: #eff6ff;
-            --accent-dark: #0f172a;
-            --success-bg: #ecfdf5;
-            --success-border: #10b981;
-            --success-text: #065f46;
-            --error-bg: #fef2f2;
-            --error-border: #ef4444;
-            --error-text: #991b1b;
-            --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
-            --shadow-md: 0 10px 25px -5px rgba(15, 23, 42, 0.07), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--bg-page);
-            color: var(--text-main);
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        .container {
-            max-width: 1140px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* NAVBAR */
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .nav-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 72px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 800;
-            font-size: 1.25rem;
-            letter-spacing: -0.03em;
-            color: var(--text-main);
-        }
-
-        .logo-badge {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.72rem;
-            font-weight: 700;
-            background: var(--brand-soft);
-            color: var(--brand-primary);
-            border: 1px solid #bfdbfe;
-            padding: 3px 8px;
-            border-radius: 6px;
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 32px;
-            font-size: 0.92rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-        }
-
-        .nav-menu a:hover {
-            color: var(--brand-primary);
-        }
-
-        .btn-header {
-            background: var(--accent-dark);
-            color: #ffffff;
-            padding: 10px 18px;
-            border-radius: 8px;
-            font-size: 0.88rem;
-            font-weight: 600;
-            transition: background 0.2s ease;
-        }
-
-        .btn-header:hover {
-            background: #1e293b;
-        }
-
-        /* HERO SECTION */
-        .hero {
-            background: var(--bg-surface);
-            border-bottom: 1px solid var(--border-light);
-            padding: 84px 0;
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 48px;
-            align-items: center;
-        }
-
-        .status-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--bg-subtle);
-            border: 1px solid var(--border-light);
-            padding: 6px 14px;
-            border-radius: 99px;
-            font-size: 0.82rem;
-            font-weight: 600;
-            color: var(--text-secondary);
-            margin-bottom: 24px;
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #10b981;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.3rem, 4.5vw, 3.6rem);
-            font-weight: 800;
-            line-height: 1.1;
-            letter-spacing: -0.03em;
-            color: var(--text-main);
-            margin-bottom: 20px;
-        }
-
-        .hero h1 span {
-            color: var(--brand-primary);
-        }
-
-        .hero-subtitle {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 32px;
-            max-width: 580px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-        }
-
-        .btn-primary {
-            background: var(--brand-primary);
-            color: #ffffff;
-            padding: 14px 26px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            border: none;
-            cursor: pointer;
-            transition: background 0.2s ease;
-        }
-
-        .btn-primary:hover {
-            background: var(--brand-hover);
-        }
-
-        .btn-secondary {
-            background: var(--bg-surface);
-            color: var(--text-main);
-            border: 1px solid var(--border-medium);
-            padding: 14px 26px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: background 0.2s ease;
-        }
-
-        .btn-secondary:hover {
-            background: var(--bg-subtle);
-        }
-
-        /* REGION CARD */
-        .region-card {
-            background: var(--bg-page);
-            border: 1px solid var(--border-light);
-            border-radius: 16px;
-            padding: 28px;
-            box-shadow: var(--shadow-md);
-        }
-
-        .region-card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-bottom: 16px;
-            border-bottom: 1px solid var(--border-light);
-            margin-bottom: 20px;
-        }
-
-        .region-card-title {
-            font-weight: 700;
-            font-size: 0.95rem;
-            color: var(--text-main);
-        }
-
-        .region-card-tag {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            color: var(--brand-primary);
-            font-weight: 700;
-        }
-
-        .region-block {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-light);
-            border-radius: 10px;
-            padding: 16px;
-            margin-bottom: 14px;
-        }
-
-        .region-block:last-of-type {
-            margin-bottom: 0;
-        }
-
-        .region-badge {
-            display: inline-block;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.72rem;
-            font-weight: 700;
-            padding: 3px 8px;
-            border-radius: 4px;
-            margin-bottom: 6px;
-        }
-
-        .badge-vod {
-            background: #fef3c7;
-            color: #92400e;
-        }
-
-        .badge-live {
-            background: #dcfce7;
-            color: #166534;
-        }
-
-        .region-block h4 {
-            font-size: 0.98rem;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .region-block p {
-            font-size: 0.86rem;
-            color: var(--text-secondary);
-            line-height: 1.45;
-        }
-
-        /* SECCIONES */
-        .section {
-            padding: 84px 0;
-        }
-
-        .section-header {
-            max-width: 660px;
-            margin-bottom: 48px;
-        }
-
-        .section-eyebrow {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.78rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--brand-primary);
-            margin-bottom: 8px;
-            display: block;
-        }
-
-        .section-title {
-            font-size: clamp(1.8rem, 3.2vw, 2.4rem);
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            margin-bottom: 12px;
-        }
-
-        .section-desc {
-            color: var(--text-secondary);
-            font-size: 1.02rem;
-        }
-
-        /* TEST / EVALUADOR */
-        .quiz-wrapper {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-light);
-            border-radius: 16px;
-            padding: 36px;
-            box-shadow: var(--shadow-md);
-        }
-
-        .quiz-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 16px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid var(--border-light);
-            margin-bottom: 28px;
-        }
-
-        .quiz-progress-info {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .quiz-counter {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
-            font-weight: 700;
-            background: var(--brand-soft);
-            color: var(--brand-primary);
-            padding: 6px 12px;
-            border-radius: 6px;
-        }
-
-        .quiz-topic {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text-muted);
-        }
-
-        .progress-bar-bg {
-            width: 220px;
-            height: 8px;
-            background: var(--bg-subtle);
-            border-radius: 99px;
-            overflow: hidden;
-        }
-
-        .progress-bar-fill {
-            height: 100%;
-            width: 10%;
-            background: var(--brand-primary);
-            transition: width 0.3s ease;
-        }
-
-        .quiz-question {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 24px;
-            line-height: 1.45;
-        }
-
-        .quiz-options {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 12px;
-        }
-
-        .option-btn {
-            background: var(--bg-page);
-            border: 1px solid var(--border-medium);
-            border-radius: 10px;
-            padding: 16px 20px;
-            text-align: left;
-            font-family: inherit;
-            font-size: 0.96rem;
-            font-weight: 500;
-            color: var(--text-main);
-            cursor: pointer;
-            display: flex;
-            align-items: flex-start;
-            gap: 14px;
-            transition: all 0.15s ease;
-        }
-
-        .option-btn:hover:not(:disabled) {
-            border-color: var(--brand-primary);
-            background: var(--brand-soft);
-        }
-
-        .option-btn:disabled {
-            cursor: default;
-        }
-
-        .option-btn.correct {
-            background: var(--success-bg);
-            border-color: var(--success-border);
-            color: var(--success-text);
-            font-weight: 600;
-        }
-
-        .option-btn.wrong {
-            background: var(--error-bg);
-            border-color: var(--error-border);
-            color: var(--error-text);
-        }
-
-        .option-letter {
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: 700;
-            font-size: 0.85rem;
-            background: var(--bg-surface);
-            border: 1px solid var(--border-medium);
-            min-width: 28px;
-            height: 28px;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .quiz-explanation {
-            margin-top: 20px;
-            padding: 16px 20px;
-            border-radius: 10px;
-            font-size: 0.94rem;
-            display: none;
-            animation: fadeIn 0.25s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(4px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .quiz-footer {
-            margin-top: 24px;
-            display: flex;
-            justify-content: flex-end;
-        }
-
-        /* PANTALLA DE RESULTADOS */
-        .result-screen {
-            display: none;
-            text-align: center;
-            padding: 20px 0;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .score-circle {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: var(--brand-soft);
-            border: 4px solid var(--brand-primary);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-        }
-
-        .score-number {
-            font-size: 2.4rem;
-            font-weight: 800;
-            color: var(--brand-primary);
-            line-height: 1;
-        }
-
-        .score-max {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            margin-top: 4px;
-        }
-
-        .rank-badge {
-            display: inline-block;
-            background: var(--accent-dark);
-            color: #ffffff;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
-            font-weight: 700;
-            padding: 6px 16px;
-            border-radius: 99px;
-            margin-bottom: 16px;
-        }
-
-        .result-title {
-            font-size: 1.65rem;
-            font-weight: 800;
-            margin-bottom: 12px;
-        }
-
-        .result-advice {
-            color: var(--text-secondary);
-            max-width: 580px;
-            margin: 0 auto 28px;
-            font-size: 0.98rem;
-        }
-
-        .result-actions {
-            display: flex;
-            justify-content: center;
-            gap: 14px;
-            flex-wrap: wrap;
-        }
-
-        .btn-twitter {
-            background: #000000;
-            color: #ffffff;
-            padding: 14px 24px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: background 0.2s ease;
-        }
-
-        .btn-twitter:hover {
-            background: #27272a;
-        }
-
-        /* METODOLOGÍA */
-        .method-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 24px;
-        }
-
-        .method-card {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-light);
-            border-radius: 12px;
-            padding: 28px;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .method-num {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: var(--brand-primary);
-            margin-bottom: 12px;
-            display: block;
-        }
-
-        .method-card h3 {
-            font-size: 1.12rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .method-card p {
-            font-size: 0.92rem;
-            color: var(--text-secondary);
-        }
-
-        /* PLANES */
-        .plans-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-            gap: 24px;
-        }
-
-        .plan-card {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-light);
-            border-radius: 16px;
-            padding: 36px 28px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .plan-card.featured {
-            border: 2px solid var(--brand-primary);
-            box-shadow: var(--shadow-md);
-            position: relative;
-        }
-
-        .featured-tag {
-            position: absolute;
-            top: -13px;
-            right: 24px;
-            background: var(--brand-primary);
-            color: #ffffff;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.72rem;
-            font-weight: 700;
-            padding: 4px 12px;
-            border-radius: 99px;
-        }
-
-        .plan-name {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--text-secondary);
-            margin-bottom: 8px;
-        }
-
-        .plan-price {
-            font-size: 2.8rem;
-            font-weight: 800;
-            color: var(--text-main);
-            margin-bottom: 20px;
-            display: flex;
-            align-items: baseline;
-            gap: 6px;
-        }
-
-        .plan-price span {
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--text-muted);
-        }
-
-        .plan-list {
-            list-style: none;
-            border-top: 1px solid var(--border-light);
-            padding-top: 20px;
-            margin-bottom: 28px;
-        }
-
-        .plan-list li {
-            font-size: 0.93rem;
-            color: var(--text-secondary);
-            margin-bottom: 12px;
-            padding-left: 22px;
-            position: relative;
-        }
-
-        .plan-list li::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--brand-primary);
-            font-weight: 800;
-        }
-
-        .plan-cta-group {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .btn-paypal {
-            display: block;
-            text-align: center;
-            background: var(--accent-dark);
-            color: #ffffff;
-            padding: 13px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.92rem;
-        }
-
-        .plan-card.featured .btn-paypal {
-            background: var(--brand-primary);
-        }
-
-        .btn-x-confirm {
-            display: block;
-            text-align: center;
-            background: var(--bg-subtle);
-            color: var(--text-main);
-            border: 1px solid var(--border-medium);
-            padding: 11px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.86rem;
-        }
-
-        /* FOOTER */
-        footer {
-            background: var(--bg-surface);
-            border-top: 1px solid var(--border-light);
-            padding: 40px 0;
-            font-size: 0.88rem;
-            color: var(--text-muted);
-        }
-
-        .footer-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-
-        @media (max-width: 880px) {
-            .hero-grid { grid-template-columns: 1fr; }
-            .nav-menu { display: none; }
-            .quiz-wrapper { padding: 24px 18px; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRAMA — Elite Fortnite Competitive Coaching & Analytics</title>
+<meta name="google-site-verification" content="pbaWqIfp2c-U7i4iu3zcZKQaEkeE2wxhrs20Dia5HU" />
+<style>
+:root{--bg:#f8fafc;--card:#ffffff;--text:#0f172a;--muted:#475569;--border:#e2e8f0;--primary:#2563eb;--primary-hover:#1d4ed8;--accent:#eff6ff}
+*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;scroll-behavior:smooth}
+html,body{background:var(--bg)!important;color:var(--text)!important;line-height:1.6}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+header{background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+.nav{display:flex;justify-content:space-between;align-items:center;height:72px}
+.logo{font-weight:800;font-size:1.3rem;letter-spacing:-0.5px}
+.tag{background:var(--accent);color:var(--primary);font-size:.72rem;padding:4px 10px;border-radius:6px;margin-left:8px;border:1px solid #bfdbfe;font-weight:700}
+.nav-links{display:flex;gap:24px;font-size:.9rem;font-weight:600;color:var(--muted)}
+.nav-links a:hover{color:var(--primary)}
+.btn-top{background:var(--text);color:#fff;padding:10px 18px;border-radius:8px;font-size:.88rem;font-weight:600}
+.hero{background:var(--card);padding:72px 0;border-bottom:1px solid var(--border)}
+.grid2{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center}
+.pill{display:inline-flex;align-items:center;gap:6px;background:#f1f5f9;color:var(--muted);font-size:.82rem;font-weight:600;padding:6px 14px;border-radius:99px;margin-bottom:20px}
+.dot{width:8px;height:8px;background:#10b981;border-radius:50%}
+h1{font-size:clamp(2.2rem,4vw,3.5rem);font-weight:800;line-height:1.1;margin-bottom:20px}
+h1 span{color:var(--primary)}
+.lead{color:var(--muted);font-size:1.1rem;margin-bottom:32px}
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-p{background:var(--primary);color:#fff;padding:14px 26px;border-radius:8px;font-weight:600;border:none;cursor:pointer;font-size:.95rem;transition:background .2s}
+.btn-p:hover{background:var(--primary-hover)}
+.btn-s{background:var(--card);color:var(--text);border:1px solid #cbd5e1;padding:14px 26px;border-radius:8px;font-weight:600;cursor:pointer;font-size:.95rem}
+.box-reg{background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:0 10px 25px -5px rgba(15,23,42,.05)}
+.reg-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;margin-top:14px}
+.b-vod{background:#fef3c7;color:#92400e;font-size:.72rem;font-weight:700;padding:3px 8px;border-radius:4px}
+.b-live{background:#dcfce7;color:#166534;font-size:.72rem;font-weight:700;padding:3px 8px;border-radius:4px}
+.sec{padding:80px 0}
+.sec-h{max-width:640px;margin-bottom:48px}
+.eyebrow{color:var(--primary);font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:8px}
+h2{font-size:2.2rem;font-weight:800;margin-bottom:12px}
+.sub{color:var(--muted);font-size:1.05rem}
+/* CALCULADORA DE PLANES */
+.calc-box{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:32px;box-shadow:0 4px 20px rgba(15,23,42,.04);margin-bottom:40px}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px}
+.calc-group label{display:block;font-size:.88rem;font-weight:700;margin-bottom:8px;color:var(--muted)}
+.calc-select{width:100%;padding:12px 16px;border:1px solid var(--border);border-radius:8px;background:var(--bg);font-size:.95rem;font-weight:600;color:var(--text)}
+.calc-result{background:var(--accent);border:1px solid #bfdbfe;border-radius:12px;padding:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+/* TEST */
+.quiz-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:36px;box-shadow:0 10px 25px -5px rgba(15,23,42,.07)}
+.q-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);padding-bottom:16px;margin-bottom:24px}
+.q-badge{background:var(--accent);color:var(--primary);font-weight:700;font-size:.85rem;padding:6px 12px;border-radius:6px}
+.q-title{font-size:1.2rem;font-weight:700;margin-bottom:20px}
+.opt{width:100%;text-align:left;background:var(--bg);border:1px solid #cbd5e1;padding:16px 20px;border-radius:10px;margin-bottom:12px;font-size:.96rem;cursor:pointer;color:var(--text);display:flex;gap:12px;align-items:center;transition:all .15s}
+.opt:hover:not(:disabled){border-color:var(--primary);background:var(--accent)}
+.opt.ok{background:#ecfdf5;border-color:#10b981;color:#065f46;font-weight:600}
+.opt.no{background:#fef2f2;border-color:#ef4444;color:#991b1b}
+.exp{padding:16px;border-radius:10px;margin-top:16px;font-size:.94rem;display:none}
+.res{display:none;text-align:center;padding:24px 0}
+.nota{width:120px;height:120px;border-radius:50%;background:var(--accent);border:4px solid var(--primary);margin:0 auto 20px;display:flex;flex-direction:column;justify-content:center;align-items:center}
+.nota b{font-size:2.6rem;color:var(--primary);line-height:1}
+.rango{background:var(--text);color:#fff;font-size:.85rem;font-weight:700;padding:6px 16px;border-radius:99px;display:inline-block;margin-bottom:16px}
+/* WALL OF FAME */
+.fame-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px}
+.fame-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:0 4px 16px rgba(15,23,42,.04)}
+.fame-tag{font-size:.78rem;font-weight:700;color:var(--primary);margin-bottom:8px;display:block}
+.fame-card p{color:var(--muted);font-size:.95rem;margin-bottom:16px;font-style:italic}
+.fame-author{font-weight:700;font-size:.9rem}
+/* PLANES */
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px}
+.plan{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:36px 28px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 4px 16px rgba(15,23,42,.04)}
+.plan.top{border:2px solid var(--primary);box-shadow:0 10px 30px rgba(37,99,235,.15);position:relative}
+.top-badge{position:absolute;top:-13px;right:24px;background:var(--primary);color:#fff;font-size:.72rem;font-weight:700;padding:4px 12px;border-radius:99px}
+.price{font-size:2.8rem;font-weight:800;margin:12px 0 24px}
+.price span{font-size:.9rem;color:var(--muted);font-weight:500}
+.plan ul{list-style:none;border-top:1px solid var(--border);padding-top:20px;margin-bottom:28px}
+.plan li{font-size:.94rem;color:var(--muted);margin-bottom:12px;padding-left:20px;position:relative}
+.plan li::before{content:"✓";position:absolute;left:0;color:var(--primary);font-weight:800}
+.btn-pay{display:block;text-align:center;background:var(--text);color:#fff;padding:13px;border-radius:8px;font-weight:600;margin-bottom:10px}
+.plan.top .btn-pay{background:var(--primary)}
+.btn-dm{display:block;text-align:center;background:var(--bg);color:var(--text);border:1px solid #cbd5e1;padding:11px;border-radius:8px;font-size:.86rem;font-weight:600}
+/* FAQ */
+.faq-list{max-width:800px;margin:0 auto}
+.faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;margin-bottom:16px;overflow:hidden}
+.faq-q{padding:20px;font-weight:700;font-size:1.05rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-a{padding:0 20px 20px;color:var(--muted);font-size:.95rem;display:none;line-height:1.6}
+footer{background:var(--card);border-top:1px solid var(--border);padding:40px 0;text-align:center;font-size:.9rem;color:var(--muted)}
+@media(max-width:880px){.grid2,.calc-grid{grid-template-columns:1fr}.nav-links{display:none}}
+</style>
 </head>
 <body>
 
-    <!-- NAVBAR -->
-    <header>
-        <div class="container nav-bar">
-            <a href="#inicio" class="logo">
-                PRAMA <span class="logo-badge">ESPORTS COACHING</span>
-            </a>
-            <nav class="nav-menu">
-                <a href="#evaluador">Test de Nivel (1-10)</a>
-                <a href="#metodologia">Metodología</a>
-                <a href="#planes">Planes y Tarifas</a>
-            </nav>
-            <a href="https://x.com/Pramaqy" target="_blank" rel="noopener noreferrer" class="btn-header">DM @Pramaqy</a>
+<header>
+  <div class="wrap nav">
+    <div class="logo">PRAMA <span class="tag">PRO COACHING</span></div>
+    <div class="nav-links">
+      <a href="#calculadora">Calculadora</a>
+      <a href="#test">Test de Nivel</a>
+      <a href="#resultados">Casos de Éxito</a>
+      <a href="#planes">Planes</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a href="https://x.com/Pramaqy" target="_blank" class="btn-top">DM @Pramaqy</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap grid2">
+    <div>
+      <div class="pill"><span class="dot"></span> Temporada Competitiva Actualizada 2026</div>
+      <h1>Decisiones de torneo que te llevan a <span>clasificar.</span></h1>
+      <p class="lead">Soy <strong>Prama</strong>, coach y analista competitivo de Fortnite. Estructuro tu macro, optimizo tus rotaciones de Endgame y corrijo tus peleas con métodos analíticos probados.</p>
+      <div class="btns">
+        <a href="#test" class="btn-p">Hacer Test de Nivel (1-10)</a>
+        <a href="#calculadora" class="btn-s">Asistente de Planes</a>
+      </div>
+    </div>
+    <div class="box-reg">
+      <strong>Cobertura Oficial por Regiones</strong>
+      <div class="reg-item">
+        <span class="b-vod">SOLO VOD REVIEWS</span>
+        <h4>Europa (EU) & Oriente Medio (ME)</h4>
+        <p style="font-size:.86rem;color:var(--muted);margin-top:4px">Análisis exhaustivo de repeticiones de torneo frame a frame sin latencia.</p>
+      </div>
+      <div class="reg-item">
+        <span class="b-live">LIVE COACHING + VODs</span>
+        <h4>NAC, BR, NAW, Oceanía & Asia</h4>
+        <p style="font-size:.86rem;color:var(--muted);margin-top:4px">Acompañamiento en directo por Discord durante tus torneos y Cash Cups.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULADORA / ASISTENTE DE PLANES INTERACTIVO -->
+<section class="sec" id="calculadora">
+  <div class="wrap">
+    <div class="sec-h">
+      <span class="eyebrow">Asistente Inteligente</span>
+      <h2>¿Qué plan necesitas para tu nivel?</h2>
+      <p class="sub">Selecciona tu región y tu objetivo competitivo para descubrir la solución exacta que requiere tu equipo.</p>
+    </div>
+    <div class="calc-box">
+      <div class="calc-grid">
+        <div class="calc-group">
+          <label>1. Selecciona tu Región de Juego</label>
+          <select id="calc-region" class="calc-select" onchange="updateCalc()">
+            <option value="eu">Europa (EU) / Oriente Medio (ME) [VOD Reviews]</option>
+            <option value="na">NAC / BR / NAW / Oceanía / Asia [Live Coaching]</option>
+          </select>
         </div>
-    </header>
-
-    <!-- HERO -->
-    <section class="hero" id="inicio">
-        <div class="container hero-grid">
-            <div>
-                <div class="status-pill">
-                    <span class="status-dot"></span>
-                    Meta Actualizado — Temporada Competitiva Nov 2026
-                </div>
-                <h1>Decisiones de torneo que te llevan a <span>clasificar.</span></h1>
-                <p class="hero-subtitle">Soy <strong>Prama</strong>, coach y analista competitivo de Fortnite. Ayudo a jugadores Solo y Dúos a dominar el macro-juego, optimizar rotaciones de Endgame y corregir errores mecánicos con resultados medibles.</p>
-                <div class="hero-buttons">
-                    <a href="#evaluador" class="btn-primary">Hacer Test de Nivel (10 Preguntas)</a>
-                    <a href="#planes" class="btn-secondary">Ver Tarifas de Coaching</a>
-                </div>
-            </div>
-
-            <div class="region-card">
-                <div class="region-card-header">
-                    <span class="region-card-title">Cobertura por Regiones</span>
-                    <span class="region-card-tag">2026 SCHEDULE</span>
-                </div>
-                <div class="region-block">
-                    <span class="region-badge badge-vod">SOLO VOD REVIEWS</span>
-                    <h4>Europa (EU) & Oriente Medio (ME)</h4>
-                    <p>Análisis exhaustivo de repeticiones de torneo frame a frame: posicionamiento, gasto de materiales, drop-spots y toma de decisiones sin latencia.</p>
-                </div>
-                <div class="region-block">
-                    <span class="region-badge badge-live">LIVE COACHING + VODs</span>
-                    <h4>NAC, BR, NAW, Oceanía & Asia</h4>
-                    <p>Acompañamiento en directo por Discord durante tus torneos y Cash Cups: llamadas de rotación en tiempo real, gestión de surge y coaching integral.</p>
-                </div>
-            </div>
+        <div class="calc-group">
+          <label>2. Tu Objetivo Principal</label>
+          <select id="calc-goal" class="calc-select" onchange="updateCalc()">
+            <option value="vod">Pulir errores puntuales de una Cash Cup (1 Sesión)</option>
+            <option value="pack">Subir de rango, mejorar rotaciones y pack semanal</option>
+            <option value="pro">Proyecto a largo plazo: Clasificar a FNCS / Premios</option>
+          </select>
         </div>
-    </section>
-
-    <!-- EVALUADOR COMPETITIVO DINÁMICO (CON BOTÓN DE COMPARTIR EN X) -->
-    <section class="section" id="evaluador">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-eyebrow">Diagnóstico en tiempo real</span>
-                <h2 class="section-title">Test de Conocimiento Competitivo (Meta Actual)</h2>
-                <p class="section-desc">Cada vez que entras o reinicias se generan <strong>10 preguntas diferentes</strong> sobre el meta actual. Obtén tu nota del 1 al 10 y compártela en X para retar a tus amigos.</p>
-            </div>
-
-            <div class="quiz-wrapper">
-                <div id="quiz-active-view">
-                    <div class="quiz-top">
-                        <div class="quiz-progress-info">
-                            <span class="quiz-counter" id="q-counter">PREGUNTA 1 / 10</span>
-                            <span class="quiz-topic" id="q-topic">META & LOOT POOL</span>
-                        </div>
-                        <div class="progress-bar-bg">
-                            <div class="progress-bar-fill" id="q-progress"></div>
-                        </div>
-                    </div>
-
-                    <div class="quiz-question" id="q-text">Cargando escenario táctico...</div>
-
-                    <div class="quiz-options" id="q-options"></div>
-
-                    <div class="quiz-explanation" id="q-explanation"></div>
-
-                    <div class="quiz-footer">
-                        <button class="btn-primary" id="q-next-btn" style="display: none;" onclick="nextQuestion()">Siguiente Pregunta →</button>
-                    </div>
-                </div>
-
-                <!-- PANTALLA DE RESULTADOS CON BOTÓN COMPARTIR EN X -->
-                <div class="result-screen" id="quiz-result-view">
-                    <div class="score-circle">
-                        <span class="score-number" id="final-score">8</span>
-                        <span class="score-max">DE 10 PTS</span>
-                    </div>
-                    <div class="rank-badge" id="final-rank">RANGO: UNREAL / SEMI-PRO</div>
-                    <h3 class="result-title" id="final-headline">Buena lectura competitiva</h3>
-                    <p class="result-advice" id="final-advice">Tienes claros los fundamentos del meta actual, pero pulir tus transiciones de mid-game te dará los puntos extra para entrar en premios.</p>
-                    <div class="result-actions">
-                        <a id="share-twitter-btn" href="#" target="_blank" rel="noopener noreferrer" class="btn-twitter">
-                            𝕏 Compartir mi nota en X
-                        </a>
-                        <button class="btn-secondary" onclick="startQuiz()">Generar otras 10 preguntas nuevas ↺</button>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div class="calc-result">
+        <div>
+          <strong id="calc-title" style="font-size:1.1rem;display:block;margin-bottom:4px">Plan Recomendado: Plan Básico (15€)</strong>
+          <span id="calc-desc" style="font-size:.9rem;color:var(--muted)">Ideal para corregir tu última repetición de torneo en EU.</span>
         </div>
-    </section>
+        <a id="calc-link" href="https://paypal.me/VyroEsports/15" target="_blank" class="btn-p">Contratar Plan Directo →</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- METODOLOGÍA -->
-    <section class="section" id="metodologia" style="background: var(--bg-surface); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-eyebrow">Estructura de las sesiones</span>
-                <h2 class="section-title">Cómo trabajamos tu evolución</h2>
-                <p class="section-desc">Sin teoría vacía. Cada sesión se centra en corregir los patrones exactos que te hacen perder puntos en lobbies competitivos.</p>
-            </div>
-
-            <div class="method-grid">
-                <div class="method-card">
-                    <span class="method-num">01 // EARLY GAME</span>
-                    <h3>Rutas de Drop & Economía</h3>
-                    <p>Optimizamos tu caída al milímetro, tiempos de farmeo y aprovechamiento de cofres para salir con loadout completo sin arriesgar 50/50 innecesarios.</p>
-                </div>
-                <div class="method-card">
-                    <span class="method-num">02 // MID GAME</span>
-                    <h3>Lectura de Mapa & Surge</h3>
-                    <p>Posicionamiento en zonas centrales, cuándo buscar daño seguro sobre rotaciones tardías para evitar el Storm Surge y gestión inteligente de curas.</p>
-                </div>
-                <div class="method-card">
-                    <span class="method-num">03 // ENDGAME</span>
-                    <h3>Moving Zones & Capas</h3>
-                    <p>Identificación del lado muerto de zona, cuándo jugar capa baja reutilizando estructuras, cuándo disputar altura y cómo coordinar refrescos limpios.</p>
-                </div>
-                <div class="method-card">
-                    <span class="method-num">04 // FIGHTS</span>
-                    <h3>Box-Fighting Eficiente</h3>
-                    <p>Cómo cerrar peleas en menos de 20 segundos usando ángulos de ventaja (right-hand peeks) para evitar third-parties del lobby.</p>
-                </div>
-            </div>
+<!-- TEST DE CONOCIMIENTO (10 PREGUNTAS) -->
+<section class="sec" id="test" style="background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="wrap">
+    <div class="sec-h">
+      <span class="eyebrow">Diagnóstico en tiempo real</span>
+      <h2>Test Competitivo (10 Preguntas Aleatorias)</h2>
+      <p class="sub">Cada vez que entras se generan 10 preguntas distintas del meta actual. Obtén tu nota del 1 al 10 y compártela en X.</p>
+    </div>
+    <div class="quiz-card">
+      <div id="q-box">
+        <div class="q-head">
+          <span class="q-badge" id="q-num">PREGUNTA 1 / 10</span>
+          <span style="font-size:.85rem;color:var(--muted);font-weight:600" id="q-cat">META</span>
         </div>
-    </section>
-
-    <!-- PLANES Y TARIFAS -->
-    <section class="section" id="planes">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-eyebrow">Contratación directa</span>
-                <h2 class="section-title">Planes de Coaching</h2>
-                <p class="section-desc">Selecciona el plan que mejor encaje con tu región y calendario de torneos. Pago seguro mediante PayPal oficial.</p>
-            </div>
-
-            <div class="plans-grid">
-                <div class="plan-card">
-                    <div>
-                        <div class="plan-name">Plan Básico</div>
-                        <div class="plan-price">15€ <span>/ sesión</span></div>
-                        <ul class="plan-list">
-                            <li>VOD Review completo de torneo (EU/ME o cualquier región)</li>
-                            <li>Detección de errores de posicionamiento y mats</li>
-                            <li>Corrección táctica de peleas</li>
-                            <li>Resumen escrito con prioridades de mejora</li>
-                        </ul>
-                    </div>
-                    <div class="plan-cta-group">
-                        <a href="https://paypal.me/VyroEsports/15" target="_blank" rel="noopener noreferrer" class="btn-paypal">1. Pagar 15€ en PayPal</a>
-                        <a href="https://x.com/Pramaqy?text=Hola%20Prama,%20acabo%20de%20pagar%20el%20Plan%20B%C3%A1sico%20(15%E2%82%AC)%20en%20PayPal.%20Mi%20regi%C3%B3n%20y%20Discord%20son:" target="_blank" rel="noopener noreferrer" class="btn-x-confirm">2. Confirmar pago por X (@Pramaqy)</a>
-                    </div>
-                </div>
-
-                <div class="plan-card featured">
-                    <span class="featured-tag">MÁS ELEGIDO</span>
-                    <div>
-                        <div class="plan-name">Plan Intermedio</div>
-                        <div class="plan-price">45€ <span>/ pack</span></div>
-                        <ul class="plan-list">
-                            <li>Live Coaching en directo (NAC/BR/NAW/OCE/ASIA) o Pack VODs (EU/ME)</li>
-                            <li>Estrategia personalizada de rotaciones y Endgame</li>
-                            <li>Rutinas específicas de mecánicas y edición</li>
-                            <li>Seguimiento y ajustes durante la semana</li>
-                        </ul>
-                    </div>
-                    <div class="plan-cta-group">
-                        <a href="https://paypal.me/VyroEsports/45" target="_blank" rel="noopener noreferrer" class="btn-paypal">1. Pagar 45€ en PayPal</a>
-                        <a href="https://x.com/Pramaqy?text=Hola%20Prama,%20acabo%20de%20pagar%20el%20Plan%20Intermedio%20(45%E2%82%AC)%20en%20PayPal.%20Mi%20regi%C3%B3n%20y%20Discord%20son:" target="_blank" rel="noopener noreferrer" class="btn-x-confirm">2. Confirmar pago por X (@Pramaqy)</a>
-                    </div>
-                </div>
-
-                <div class="plan-card">
-                    <div>
-                        <div class="plan-name">Plan Elite Pro</div>
-                        <div class="plan-price">75€ <span>/ mensual</span></div>
-                        <ul class="plan-list">
-                            <li>Acompañamiento completo en torneos oficiales del mes</li>
-                            <li>Estudio profundo de Drop-Spots y planes anti-contest</li>
-                            <li>Sinergia IGL/Fragger para Dúos o Tríos</li>
-                            <li>Soporte prioritario diario por Discord y X</li>
-                        </ul>
-                    </div>
-                    <div class="plan-cta-group">
-                        <a href="https://paypal.me/VyroEsports/75" target="_blank" rel="noopener noreferrer" class="btn-paypal">1. Pagar 75€ en PayPal</a>
-                        <a href="https://x.com/Pramaqy?text=Hola%20Prama,%20acabo%20de%20pagar%20el%20Plan%20Elite%20Pro%20(75%E2%82%AC)%20en%20PayPal.%20Mi%20regi%C3%B3n%20y%20Discord%20son:" target="_blank" rel="noopener noreferrer" class="btn-x-confirm">2. Confirmar pago por X (@Pramaqy)</a>
-                    </div>
-                </div>
-            </div>
+        <div class="q-title" id="q-txt"></div>
+        <div id="q-opts"></div>
+        <div class="exp" id="q-exp"></div>
+        <div style="margin-top:20px;text-align:right">
+          <button class="btn-p" id="q-next" style="display:none" onclick="nextQ()">Siguiente Pregunta →</button>
         </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        <div class="container footer-inner">
-            <div><strong>PRAMA</strong> — Fortnite Competitive Coaching & Analytics</div>
-            <div>Pagos verificados: <strong>paypal.me/VyroEsports</strong> • Contacto: <strong>@Pramaqy</strong></div>
-            <div>© 2026 Todos los derechos reservados.</div>
+      </div>
+      <div class="res" id="q-res">
+        <div class="nota"><b id="r-nota">8</b><span style="font-size:.75rem;color:var(--muted)">DE 10 PTS</span></div>
+        <div class="rango" id="r-rango">RANGO: UNREAL PRO</div>
+        <h3 id="r-tit" style="margin-bottom:8px;font-size:1.5rem"></h3>
+        <p id="r-desc" style="color:var(--muted);max-width:540px;margin:0 auto 28px"></p>
+        <div class="btns" style="justify-content:center">
+          <a id="r-share" href="#" target="_blank" class="btn-top" style="background:#000">𝕏 Compartir mi nota en X</a>
+          <button class="btn-s" onclick="initQuiz()">Generar otras 10 preguntas ↺</button>
         </div>
-    </footer>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- BANCO DE PREGUNTAS Y LÓGICA DINÁMICA -->
-    <script>
-        const questionBank = [
-            {
-                topic: "META ACTUAL // TREASURE HUNTERS",
-                q: "En el meta actual de Crossbones Isle, los cofres se autorecargan con el tiempo y las barras de oro están en la bóveda. ¿Cómo afecta esto a tu macro de early-game?",
-                options: [
-                    "Puedes alargar el saqueo en tu POI de forma segura sin necesidad de rotar tan rápido hacia máquinas expendedoras.",
-                    "Debes gastar toda tu munición en el primer minuto para farmear oro.",
-                    "Los cofres solo se recargan si eliminas a un jefe del mapa."
-                ],
-                correct: 0,
-                exp: "Al estar el oro y las máquinas expendedoras fuera de Battle Royale y recargarse los cofres con el tiempo, asegurar el control limpio de tu POI te garantiza recursos continuos."
-            },
-            {
-                topic: "GESTIÓN DE SPRITES // META",
-                q: "¿Cuál es la forma más óptima de aprovechar los Sprites (como los Fortune o Cursed Sprites) en una partida competitiva?",
-                options: [
-                    "Ignorarlos en torneo porque revelan tu posición exacta a todo el lobby.",
-                    "Usarlos en early/mid-game para localizar cofres extra y mejorar la calidad de tu loot antes de cerrar zona 3.",
-                    "Guardarlos en el inventario ocupando un hueco de curas hasta el cierre final."
-                ],
-                correct: 1,
-                exp: "Los Sprites otorgan ventajas pasivas y ayudan a revelar cofres cercanos sin sacrificar slots principales de combate en endgame."
-            },
-            {
-                topic: "ENDGAME // MOVING ZONE 4",
-                q: "Tu dúo llega a Moving Zone 4 con solo 320 de madera total y la zona sube hacia una colina ocupada por tres equipos. ¿Cuál es la llamada correcta?",
-                options: [
-                    "Usar toda vuestra movilidad directa hacia la altura para intentar limpiar al equipo de arriba.",
-                    "Rotar por capa baja pegados al borde muerto de zona, reutilizando construcciones viejas y buscando un frag de refresco lateral.",
-                    "Quedarse encerrados en una box de madera dentro de la tormenta curándose."
-                ],
-                correct: 1,
-                exp: "Subir sin materiales contra tres equipos asentados es muerte segura. Reutilizar estructuras en capa baja asegura puntos de posición."
-            },
-            {
-                topic: "STORM SURGE // ZONA 3",
-                q: "Faltan 25 segundos para el aviso de Storm Surge, vais 130 de daño por debajo del umbral y estáis boxed en el centro de zona. ¿Qué hacéis?",
-                options: [
-                    "Abrir ventana conjunta hacia el equipo más cercano que esté rotando tarde y coordinar sprays sincronizados.",
-                    "Salir de la box a rushear cuerpo a cuerpo al equipo de al lado para asegurar la eliminación.",
-                    "Gastar toda la movilidad para huir al borde de la tormenta."
-                ],
-                correct: 0,
-                exp: "Necesitáis daño rápido y seguro, no arriesgar la partida en un 50/50 dentro de una box llena de third-parties."
-            },
-            {
-                topic: "EARLY GAME // CONTEST",
-                q: "Caéis en un POI disputado, pero el rival toca suelo antes y coge la primera escopeta. ¿Qué haces?",
-                options: [
-                    "Forzar el pico contra su pared para intentar robar el segundo cofre.",
-                    "Romper contacto de inmediato hacia cobertura exterior, farmear 150 de material y re-enganchar solo cuando ambos tengáis arma.",
-                    "Quedarte quieto en una esquina esperando a que se vaya."
-                ],
-                correct: 1,
-                exp: "Nunca se fuerza un 50/50 a pico contra alguien con escopeta en torneo. Resetear 15 segundos equilibra el combate."
-            },
-            {
-                topic: "CIERRE FINAL // 2V2V1",
-                q: "Quedáis 5 jugadores vivos en cierre final: vosotros en mid-ground con 400 de metal, un dúo arriba sin movilidad y un solo en capa baja. ¿Cuál es la prioridad?",
-                options: [
-                    "Mantener vuestro techo blindado en metal y cortar la caída del equipo de altura cuando la tormenta les obligue a bajar.",
-                    "Bajar a buscar al jugador solitario de capa baja para sumar una eliminación extra.",
-                    "Editar el suelo hacia abajo para regalar vuestra posición."
-                ],
-                correct: 0,
-                exp: "Abandonar mid-ground para bajar por 1 kill os deja atrapados entre la tormenta y el equipo de altura."
-            },
-            {
-                topic: "BOX-FIGHTING // ECONOMÍA",
-                q: "En un lobby de Cash Cup con 45 jugadores vivos en Zona 4, inicias una pelea. ¿Cuál es el tiempo límite ideal antes de decidir si haces disengage?",
-                options: [
-                    "Unos 15-20 segundos: si no habéis sacado ventaja clara de daño, hay que cortar para evitar el third-party.",
-                    "Pelear hasta que uno de los dos equipos muera sin importar cuánto dure.",
-                    "Gastar los 1.500 materiales para encerrar al rival."
-                ],
-                correct: 0,
-                exp: "Alargar un fight más de 20 segundos en lobbies densos atrae sprays de todo el mapa y destruye vuestra economía de curas."
-            },
-            {
-                topic: "ROTACIONES // LADO MUERTO",
-                q: "¿Qué significa exactamente rotar por el 'lado muerto' (dead side) de una zona?",
-                options: [
-                    "Rotar por la parte del círculo donde menos equipos han aterrizado o transitado, minimizando el focus recibido.",
-                    "Caminar por dentro de la tormenta cuando quita 10 de vida por tick.",
-                    "Ir directo al centro geométrico de la zona donde están todos los equipos."
-                ],
-                correct: 0,
-                exp: "El lado muerto es la franja con menor densidad de jugadores según la trayectoria del autobús y las zonas previas."
-            },
-            {
-                topic: "SINERGIA DE DÚO // ROLES",
-                q: "Durante un tarping intenso en Moving Zone 6, ¿qué información debe comunicar el Fragger al IGL?",
-                options: [
-                    "Gritar cada vez que le quitan 20 de escudo.",
-                    "Avisar cantidad exacta de materiales restantes, enemigos pegados a su pared y oportunidades claras de refresh.",
-                    "Decidir por su cuenta cambiar de capa sin avisar."
-                ],
-                correct: 1,
-                exp: "La comunicación limpia permite al IGL decidir en décimas de segundo si seguir avanzando o abrir ángulo para refrescar."
-            },
-            {
-                topic: "GESTIÓN DE MATERIALES // TARPING",
-                q: "Vas a hacer un túnel (tarp) largo en Zona 5 y tienes 400 de madera, 300 de piedra y 500 de metal. ¿Qué material debes usar primero?",
-                options: [
-                    "El metal, porque es el más resistente.",
-                    "La madera y la piedra para el avance horizontal, reservando el metal para las cajas de aguante final y los cierres.",
-                    "Mezclar los tres materiales aleatoriamente."
-                ],
-                correct: 1,
-                exp: "El metal tarda más en construirse pero tiene la máxima vida final; guardarlo para las últimas zonas evita que te tiren la box."
-            },
-            {
-                topic: "POSICIONAMIENTO // ALTURA",
-                q: "¿Cuál es el error más común que hace perder la altura (High Ground) a un dúo en Moving Zones?",
-                options: [
-                    "Construir demasiado adelante sin mirar qué equipos tienen movilidad abajo para hacer retake.",
-                    "Disparar hacia abajo para evitar que otros suban.",
-                    "Conectar las estructuras con el mid-ground."
-                ],
-                correct: 0,
-                exp: "Avanzar en línea recta sin vigilar las espaldas ni gastar balas de presión permite que un equipo de mid-ground tome tu altura gratis."
-            },
-            {
-                topic: "TIMING DE CURAS // ENDGAME",
-                q: "Estás a 65 de vida blanca en Moving Zone 5 y tienes 2 botiquines y 6 minis. Acabas de cerrar una box. ¿Cuál es la prioridad?",
-                options: [
-                    "Tirar los minis primero porque tardan menos, y priorizar posicionarte antes que quedarte en tormenta.",
-                    "Tirarte un botiquín completo aunque la tormenta ya te esté tocando la espalda.",
-                    "Salir a buscar pelea con 65 de vida."
-                ],
-                correct: 0,
-                exp: "Los minis te dan escudo inmediato en 2 segundos; quedarse en tormenta tirando un botiquín largo suele acabar en eliminación."
-            },
-            {
-                topic: "TORNEOS // GESTIÓN MENTAL",
-                q: "En un torneo de 10 partidas en 3 horas, llevas 2 partidas malas seguidas muriendo en early. ¿Cuál es el ajuste táctico profesional?",
-                options: [
-                    "Cambiar de drop-spot en cada partida sin conocer las rutas.",
-                    "Tomar 2 minutos de pausa real para resetear mentalidad y jugar una partida sólida de consistencia hasta endgame.",
-                    "Rushear al primer jugador que veas para recuperar puntos rápido."
-                ],
-                correct: 1,
-                exp: "El tilt destruye torneos. Dos buenos endgames seguidos te vuelven a meter en el top de la tabla."
-            },
-            {
-                topic: "PEEKING // MECÁNICA",
-                q: "¿Por qué el 'Right-Hand Peek' (asomarse por la derecha) es obligatorio en box-fights de alto nivel?",
-                options: [
-                    "Porque la cámara del personaje está situada sobre el hombro derecho, permitiéndote disparar exponiendo una mínima parte de tu hitbox.",
-                    "Porque las escopetas hacen un 20% más de daño.",
-                    "Porque impide que el rival pueda editar su propia pared."
-                ],
-                correct: 0,
-                exp: "Dominar los ángulos derechos te permite intercambiar disparos sin recibir daño de vuelta."
-            },
-            {
-                topic: "DISENGAGE // SUPERVIVENCIA",
-                q: "Tu compañero cae eliminado en mid-game y quedan 35 equipos vivos. ¿Cuál es la jugada óptima como Solo?",
-                options: [
-                    "Entrar 1v2 contra el equipo rival para intentar vengarle aunque tengas desventaja.",
-                    "Priorizar supervivencia absoluta: jugar capas bajas, evitar peleas y rascar el máximo de puntos de posición.",
-                    "Salir de la partida para empezar la siguiente."
-                ],
-                correct: 1,
-                exp: "Un jugador solo jugando pasivo en capas bajas puede sumar decenas de puntos de top que marcan la diferencia."
-            }
-        ];
+<!-- CASOS DE ÉXITO / WALL OF FAME -->
+<section class="sec" id="resultados">
+  <div class="wrap">
+    <div class="sec-h">
+      <span class="eyebrow">Resultados verificados</span>
+      <h2>Jugadores que ya están escalando puestos</h2>
+      <p class="sub">Opiniones reales de jugadores independientes y dúos que han confiado en la metodología de Prama.</p>
+    </div>
+    <div class="fame-grid">
+      <div class="fame-card">
+        <span class="fame-tag">TOP 630 FNCS / NAC</span>
+        <p>"El live coaching durante las rondas de torneo te cambia la perspectiva por completo. Prama me cantaba las rotaciones exactas cuando el lobby se ponía denso sin dudar."</p>
+        <div class="fame-author">@AlexFN_duo — Jugador NAC</div>
+      </div>
+      <div class="fame-card">
+        <span class="fame-tag">CASH CUP FINALS / EU</span>
+        <p>"Pensaba que mis muertes en moving zones eran mala suerte. Las VOD reviews demostraron que fallaba en la gestión de materiales dos zonas antes. Brutal."</p>
+        <div class="fame-author">@Kepa_cs — Jugador EU</div>
+      </div>
+      <div class="fame-card">
+        <span class="fame-tag">PROYECTO LARGO PLAZO</span>
+        <p>"Tener un analista profesional que revise tus drops y peleas semanalmente te ahorra meses de estancamiento. 100% recomendado."</p>
+        <div class="fame-author">@Zkyt_ — IGL Dúo</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        let currentQuestions = [];
-        let currentIndex = 0;
-        let score = 0;
+<!-- PLANES Y TARIFAS -->
+<section class="sec" id="planes" style="background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="wrap">
+    <div class="sec-h">
+      <span class="eyebrow">Contratación directa</span>
+      <h2>Planes de Coaching Oficiales</h2>
+      <p class="sub">Elige tu tarifa con pago seguro por PayPal y confirma tu horario al instante por mensaje directo en X.</p>
+    </div>
+    <div class="plans">
+      <div class="plan">
+        <div>
+          <b>Plan Básico</b>
+          <div class="price">15€ <span>/ sesión</span></div>
+          <ul>
+            <li>VOD Review completo de torneo (Cualquier región)</li>
+            <li>Detección de errores de posicionamiento y mats</li>
+            <li>Resumen escrito con prioridades de mejora</li>
+          </ul>
+        </div>
+        <div>
+          <a href="https://paypal.me/VyroEsports/15" target="_blank" class="btn-pay">1. Pagar 15€ en PayPal</a>
+          <a href="https://x.com/Pramaqy?text=Hola%20Prama,%20acabo%20de%20pagar%20el%20Plan%20B%C3%A1sico%20(15%E2%82%AC)%20en%20PayPal.%20Mi%20Discord%20es:" target="_blank" class="btn-dm">2. Confirmar pago en X (@Pramaqy)</a>
+        </div>
+      </div>
+      <div class="plan top">
+        <span class="top-badge">MÁS ELEGIDO</span>
+        <div>
+          <b style="color:var(--primary)">Plan Intermedio</b>
+          <div class="price">45€ <span>/ pack</span></div>
+          <ul>
+            <li>Live Coaching (NAC/BR/NAW/ASIA) o Pack VODs (EU/ME)</li>
+            <li>Estrategia personalizada de rotaciones y Endgame</li>
+            <li>Seguimiento y ajustes durante la semana</li>
+          </ul>
+        </div>
+        <div>
+          <a href="https://paypal.me/VyroEsports/45" target="_blank" class="btn-pay">1. Pagar 45€ en PayPal</a>
+          <a href="https://x.com/Pramaqy?text=Hola%20Prama,%20acabo%20de%20pagar%20el%20Plan%20Intermedio%20(45%E2%82%AC)%20en%20PayPal.%20Mi%20Discord%20es:" target="_blank" class="btn-dm">2. Confirmar pago en X (@Pramaqy)</a>
+        </div>
+      </div>
+      <div class="plan">
+        <div>
+          <b>Plan Elite Pro</b>
+          <div class="price">75€ <span>/ mensual</span></div>
+          <ul>
+            <li>Acompañamiento completo en torneos oficiales del mes</li>
+            <li>Estudio profundo de Drop-Spots y planes anti-contest</li>
+            <li>Soporte prioritario diario por Discord y X</li>
+          </ul>
+        </div>
+        <div>
+          <a href="https://paypal.me/VyroEsports/75" target="_blank" class="btn-pay">1. Pagar 75€ en PayPal</a>
+          <a href="https://x.com/Pramaqy?text=Hola%20Prama,%20acabo%20de%20pagar%20el%20Plan%20Elite%20Pro%20(75%E2%82%AC)%20en%20PayPal.%20Mi%20Discord%20es:" target="_blank" class="btn-dm">2. Confirmar pago en X (@Pramaqy)</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        function getRandomTenQuestions() {
-            const copy = [...questionBank];
-            for (let i = copy.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [copy[i], copy[j]] = [copy[j], copy[i]];
-            }
-            return copy.slice(0, 10);
-        }
+<!-- FAQ DESPLEGABLE -->
+<section class="sec" id="faq">
+  <div class="wrap">
+    <div class="sec-h" style="text-align:center;margin:0 auto 48px">
+      <span class="eyebrow">Resolución de dudas</span>
+      <h2>Preguntas Frecuentes (FAQ)</h2>
+      <p class="sub">Todo lo que necesitas saber antes de empezar a trabajar juntos.</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">¿Cómo se envían las repeticiones para la VOD Review? <span>+</span></div>
+        <div class="faq-a">Puedes pasarme el archivo de repetición de Fortnite directamente por Discord o subir la partida completa a un enlace de YouTube privado o público. Lo analizamos frame a frame.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">¿Por dónde se realiza el Live Coaching en directo? <span>+</span></div>
+        <div class="faq-a">Se realiza mediante llamada de voz privada en Discord mientras juegas tus torneos en NAC, BR, NAW, Oceanía o Asia, dándote instrucciones limpias de rotación en tiempo real.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)}">¿Qué pasa después de realizar el pago en PayPal? <span>+</span></div>
+        <div class="faq-a">Al pulsar el segundo botón de cada plan, se abrirá tu X con un mensaje preescrito para @Pramaqy. Me lo envías con tu usuario de Discord y cuadramos la hora exacta al instante.</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        function startQuiz() {
-            currentQuestions = getRandomTenQuestions();
-            currentIndex = 0;
-            score = 0;
+<footer>
+  <div class="wrap"><strong>PRAMA</strong> — Fortnite Competitive Coaching & Analytics • PayPal: <strong>paypal.me/VyroEsports</strong> • X: <strong>@Pramaqy</strong></div>
+</footer>
 
-            document.getElementById('quiz-result-view').style.display = 'none';
-            document.getElementById('quiz-active-view').style.display = 'block';
-            renderQuestion();
-        }
+<script>
+// CALCULADORA INTELIGENTE
+function updateCalc(){
+  const reg = document.getElementById('calc-region').value;
+  const goal = document.getElementById('calc-goal').value;
+  const title = document.getElementById('calc-title');
+  const desc = document.getElementById('calc-desc');
+  const link = document.getElementById('calc-link');
 
-        function renderQuestion() {
-            const qObj = currentQuestions[currentIndex];
-            document.getElementById('q-counter').textContent = `PREGUNTA ${currentIndex + 1} / 10`;
-            document.getElementById('q-topic').textContent = qObj.topic;
-            document.getElementById('q-progress').style.width = `${((currentIndex + 1) / 10) * 100}%`;
-            document.getElementById('q-text').textContent = qObj.q;
+  if(goal === 'vod'){
+    title.textContent = "Plan Recomendado: Plan Básico (15€)";
+    desc.textContent = "Ideal para una revisión profunda de tu última repetición de torneo.";
+    link.href = "https://paypal.me/VyroEsports/15";
+    link.textContent = "Contratar Plan Básico (15€) →";
+  }else if(goal === 'pack'){
+    title.textContent = "Plan Recomendado: Plan Intermedio (45€)";
+    desc.textContent = reg === 'eu' ? "Pack de VOD Reviews avanzadas para dominar moving zones." : "Live coaching completo en directo durante tus torneos.";
+    link.href = "https://paypal.me/VyroEsports/45";
+    link.textContent = "Contratar Plan Intermedio (45€) →";
+  }else{
+    title.textContent = "Plan Recomendado: Plan Elite Pro (75€/mes)";
+    desc.textContent = "Acompañamiento mensual completo, estudio de drops y soporte diario.";
+    link.href = "https://paypal.me/VyroEsports/75";
+    link.textContent = "Contratar Plan Elite Pro (75€/mes) →";
+  }
+}
 
-            const letters = ['A', 'B', 'C'];
-            const optionsContainer = document.getElementById('q-options');
-            optionsContainer.innerHTML = qObj.options.map((opt, idx) => `
-                <button class="option-btn" onclick="selectAnswer(${idx})">
-                    <span class="option-letter">${letters[idx]}</span>
-                    <span>${opt}</span>
-                </button>
-            `).join('');
+// FAQ ACORDEÓN
+function toggleFaq(el){
+  const ans = el.nextElementSibling;
+  const isOpen = ans.style.display === 'block';
+  document.querySelectorAll('.faq-a').forEach(a => a.style.display = 'none');
+  document.querySelectorAll('.faq-q span').forEach(s => s.textContent = '+');
+  if(!isOpen){
+    ans.style.display = 'block';
+    el.querySelector('span').textContent = '-';
+  }
+}
 
-            document.getElementById('q-explanation').style.display = 'none';
-            document.getElementById('q-next-btn').style.display = 'none';
-        }
-
-        function selectAnswer(selectedIndex) {
-            const qObj = currentQuestions[currentIndex];
-            const buttons = document.querySelectorAll('.option-btn');
-            buttons.forEach(btn => btn.disabled = true);
-
-            const expEl = document.getElementById('q-explanation');
-            expEl.style.display = 'block';
-
-            if (selectedIndex === qObj.correct) {
-                score++;
-                buttons[selectedIndex].classList.add('correct');
-                expEl.style.background = 'var(--success-bg)';
-                expEl.style.border = '1px solid var(--success-border)';
-                expEl.style.color = 'var(--success-text)';
-                expEl.innerHTML = `<strong>✓ Correcto:</strong> ${qObj.exp}`;
-            } else {
-                buttons[selectedIndex].classList.add('wrong');
-                buttons[qObj.correct].classList.add('correct');
-                expEl.style.background = 'var(--error-bg)';
-                expEl.style.border = '1px solid var(--error-border)';
-                expEl.style.color = 'var(--error-text)';
-                expEl.innerHTML = `<strong>✕ Incorrecto:</strong> ${qObj.exp}`;
-            }
-
-            const nextBtn = document.getElementById('q-next-btn');
-            nextBtn.style.display = 'inline-block';
-            nextBtn.textContent = currentIndex < 9 ? 'Siguiente Pregunta →' : 'Ver mi nota final (1-10) →';
-        }
-
-        function nextQuestion() {
-            if (currentIndex < 9) {
-                currentIndex++;
-                renderQuestion();
-            } else {
-                showResults();
-            }
-        }
-
-        function showResults() {
-            document.getElementById('quiz-active-view').style.display = 'none';
-            const resultView = document.getElementById('quiz-result-view');
-            resultView.style.display = 'block';
-
-            const finalGrade = Math.max(1, score);
-            document.getElementById('final-score').textContent = finalGrade;
-
-            let rank = "";
-            let headline = "";
-            let advice = "";
-
-            if (finalGrade >= 9) {
-                rank = "CLASIFICACIÓN: TIER-1 / UNREAL PRO";
-                headline = "Mentalidad de Finalista FNCS";
-                advice = "Dominas la lectura de zonas, la gestión de economía y el meta actual. Con sesiones de refinamiento fino puedes pelear premios de forma constante.";
-            } else if (finalGrade >= 7) {
-                rank = "CLASIFICACIÓN: CHAMPION / SEMI-PRO";
-                headline = "Muy buena base competitiva";
-                advice = "Entiendes los conceptos clave de rotación y surge, pero aún se te escapan detalles de timing en mid-game que te cuestan puntos vitales.";
-            } else if (finalGrade >= 5) {
-                rank = "CLASIFICACIÓN: ELITE / CONTENDER";
-                headline = "Buen potencial, pero pierdes puntos por macro";
-                advice = "Tienes nociones básicas, pero en lobbies duros te falta estructura en tus rotaciones y gestión de materiales.";
-            } else {
-                rank = "CLASIFICACIÓN: EN DESARROLLO (OPEN)";
-                headline = "Necesitas estructurar tu juego competitivo";
-                advice = "Estás jugando demasiado por instinto y sin plan de macro. Empezar con un Plan Básico de VOD Review te ahorrará meses de errores.";
-            }
-
-            document.getElementById('final-rank').textContent = rank;
-            document.getElementById('final-headline').textContent = headline;
-            document.getElementById('final-advice').textContent = advice;
-
-            // Configurar botón para compartir resultado en X (Twitter)
-            const tweetText = encodeURIComponent(`¡He sacado un ${finalGrade}/10 (${rank}) en el test de nivel competitivo de Fortnite de Prama! 🧠🏆\n\nPon a prueba tu macro aquí: https://iprama09-design.github.io/miweb/`);
-            document.getElementById('share-twitter-btn').href = `https://twitter.com/intent/tweet?text=${tweetText}`;
-        }
-
-        window.addEventListener('DOMContentLoaded', startQuiz);
-    </script>
+// TEST COMPETITIVO ALEATORIO (10 PREGUNTAS)
+const DB=[
+{c:"META ACTUAL",q:"En el meta actual con cofres autorecargables y sin barras de oro en partida, ¿cómo optimizas tu early-game?",o:["Aseguras tu POI limpio para aprovechar recargas sin arriesgar 50/50 por máquinas.","Gastas toda tu munición al caer.","Ignoras los cofres y vas directo a centro de zona."],a:0,e:"Controlar tu drop limpio te garantiza recursos constantes sin depender de compras."},
+{c:"SPRITES",q:"¿Cuál es el mejor uso de los Sprites en torneo?",o:["Ignorarlos siempre.","Usarlos en early/mid-game para localizar cofres extra y mejorar loot antes de zona 3.","Llevarlos en endgame en lugar de curas."],a:1,e:"Te dan ventaja de loot sin ocupar slots vitales en moving zones."},
+{c:"ENDGAME",q:"Tienes 320 de madera en Moving Zone 4 y la zona sube a una colina con 3 equipos. ¿Qué haces?",o:["Subir con movilidad a pelear altura.","Rotar por capa baja pegado al borde muerto reutilizando estructuras.","Quedarte en tormenta curándote."],a:1,e:"Sin mats para aguantar arriba, capa baja asegura puntos de posición."},
+{c:"STORM SURGE",q:"Faltan 25s para Surge, vas 130 de daño abajo y estás boxed en centro. ¿Jugada?",o:["Abrir ventana y coordinar sprays sobre rotaciones tardías.","Rushear cuerpo a cuerpo al equipo de al lado.","Huir al borde de tormenta."],a:0,e:"Necesitas daño seguro a distancia sin entrar en un 50/50."},
+{c:"EARLY GAME",q:"El rival cae antes en tu edificio y coge escopeta. ¿Qué haces?",o:["Forzar el pico contra su pared.","Romper contacto, farmear 150 mats fuera y re-enganchar con arma.","Quedarte quieto."],a:1,e:"Nunca se fuerza un 50/50 a pico contra escopeta en torneo."},
+{c:"CIERRE FINAL",q:"Quedáis 5 vivos: vosotros en mid-ground con metal, un dúo arriba sin movilidad y un solo abajo. ¿Prioridad?",o:["Aguantar techo de metal y cortar la caída del equipo de altura.","Bajar a buscar al solo por 1 kill extra.","Editar hacia abajo."],a:0,e:"Mantener mid-ground y cortar altura asegura la victoria."},
+{c:"BOX-FIGHTING",q:"En un lobby de 45 vivos en Zona 4, ¿cuánto debe durar como máximo un fight?",o:["15-20 segundos; si no hay knock claro, haces disengage.","Hasta que muera uno sin importar el tiempo.","Gastar 1.500 mats encerrando al rival."],a:0,e:"Alargar peleas atrae third-parties de todo el lobby."},
+{c:"ROTACIONES",q:"¿Qué es el 'lado muerto' (dead side) de una zona?",o:["La franja con menos densidad de equipos según autobús y zonas previas.","Caminar por tormenta de 10 ticks.","El centro exacto del círculo."],a:0,e:"Rotar por el lado muerto minimiza el focus recibido."},
+{c:"SINERGIA DÚO",q:"En un tarp intenso de Zona 6, ¿qué debe comunicar el Fragger al IGL?",o:["Cantidad exacta de mats, enemigos pegados y opciones de refresh.","Gritar cada vez que pierde 20 de escudo.","Cambiar de capa sin avisar."],a:1,e:"La info limpia permite al IGL decidir al instante."},
+{c:"MATERIALES",q:"Tienes 400 madera, 300 piedra y 500 metal para tarpear en Zona 5. ¿Qué gastas primero?",o:["Metal primero.","Madera y piedra para avanzar, guardando metal para cierres finales.","Mezclar todo al azar."],a:1,e:"El metal aguanta mucho más el focus de las últimas zonas."},
+{c:"ALTURA",q:"¿Por qué pierden la altura (High Ground) muchos dúos en Moving Zones?",o:["Avanzan sin vigilar espaldas ni presionar a equipos con movilidad abajo.","Disparan hacia abajo.","Conectan con mid-ground."],a:0,e:"Si no presionas abajo, te hacen retake gratis."},
+{c:"CURAS",q:"Tienes 65 de vida blanca, 2 botiquines y 6 minis en Zona 5. ¿Prioridad?",o:["Tirar minis (2s) y moverte con zona antes que quedarte en tormenta.","Tirar botiquín largo dentro de tormenta.","Salir a pelear."],a:0,e:"Los minis dan escudo rápido sin atraparte en tormenta."},
+{c:"MENTALIDAD",q:"Llevas 2 partidas malas seguidas en torneo. ¿Ajuste correcto?",o:["Pausar 2 minutos para resetear mente y jugar sólido a endgame.","Cambiar de drop cada partida.","Rushear a todo el mundo."],a:0,e:"Dos buenos endgames seguidos te devuelven al top."},
+{c:"MECÁNICA",q:"¿Por qué es clave el 'Right-Hand Peek' en box-fights?",o:["La cámara está en el hombro derecho y disparas exponiendo menos cuerpo.","Hace un 20% más de daño.","Bloquea ediciones rivales."],a:0,e:"Permite hacer daño sin recibir tiros de vuelta."},
+{c:"SUPERVIVENCIA",q:"Cae tu compañero en mid-game quedando 35 equipos. ¿Jugada como Solo?",o:["Jugar capas bajas sin pelear para rascar puntos de top.","Entrar 1v2 a vengarle.","Salir de la partida."],a:0,e:"Un solo pasivo suma muchos puntos de posición."}
+];
+let qs=[],idx=0,pts=0;
+function initQuiz(){
+  qs=[...DB].sort(()=>Math.random()-.5).slice(0,10);
+  idx=0;pts=0;
+  document.getElementById('q-res').style.display='none';
+  document.getElementById('q-box').style.display='block';
+  showQ();
+}
+function showQ(){
+  const d=qs[idx];
+  document.getElementById('q-num').textContent=`PREGUNTA ${idx+1} / 10`;
+  document.getElementById('q-cat').textContent=d.c;
+  document.getElementById('q-txt').textContent=d.q;
+  document.getElementById('q-opts').innerHTML=d.o.map((t,i)=>`<button class="opt" onclick="ans(${i})"><span style="background:var(--bg);border:1px solid #cbd5e1;padding:4px 10px;border-radius:6px;font-weight:700">${['A','B','C'][i]}</span><span>${t}</span></button>`).join('');
+  document.getElementById('q-exp').style.display='none';
+  document.getElementById('q-next').style.display='none';
+}
+function ans(i){
+  const d=qs[idx],bs=document.querySelectorAll('.opt'),ex=document.getElementById('q-exp');
+  bs.forEach(b=>b.disabled=true);
+  ex.style.display='block';
+  if(i===d.a){pts++;bs[i].classList.add('ok');ex.style.background='#ecfdf5';ex.style.color='#065f46';ex.innerHTML='<strong>✓ Correcto:</strong> '+d.e;}
+  else{bs[i].classList.add('no');bs[d.a].classList.add('ok');ex.style.background='#fef2f2';ex.style.color='#991b1b';ex.innerHTML='<strong>✕ Incorrecto:</strong> '+d.e;}
+  const nb=document.getElementById('q-next');
+  nb.style.display='inline-block';
+  nb.textContent=idx<9?'Siguiente Pregunta →':'Ver mi nota final (1-10) →';
+}
+function nextQ(){if(idx<9){idx++;showQ();}else{endQ();}}
+function endQ(){
+  document.getElementById('q-box').style.display='none';
+  document.getElementById('q-res').style.display='block';
+  const n=Math.max(1,pts);
+  document.getElementById('r-nota').textContent=n;
+  let rk="RANGO: OPEN / EN DESARROLLO",ti="Necesitas estructurar tu macro",dc="Juegas por instinto. Un VOD Review corregirá tus errores repetitivos de torneo.";
+  if(n>=9){rk="RANGO: TIER-1 / UNREAL PRO";ti="Mentalidad de Finalista FNCS";dc="Dominas el meta actual, rotaciones y economía de torneo de forma sobresaliente.";}
+  else if(n>=7){rk="RANGO: CHAMPION / SEMI-PRO";ti="Muy buena base competitiva";dc="Entiendes las rotaciones, pero pulir detalles de mid-game te dará más premios.";}
+  else if(n>=5){rk="RANGO: ELITE / CONTENDER";ti="Buen potencial competitivo";dc="Tienes nociones claras, pero pierdes puntos en gestión de materiales y coberturas.";}
+  document.getElementById('r-rango').textContent=rk;
+  document.getElementById('r-tit').textContent=ti;
+  document.getElementById('r-desc').textContent=dc;
+  const tw=encodeURIComponent(`¡He sacado un ${n}/10 (${rk}) en el test competitivo de Fortnite de @Pramaqy! 🏆\n\nPon a prueba tu macro aquí: https://iprama09-design.github.io/miweb/`);
+  document.getElementById('r-share').href=`https://twitter.com/intent/tweet?text=${tw}`;
+}
+initQuiz();
+</script>
 </body>
 </html>
