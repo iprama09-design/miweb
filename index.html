@@ -9,7 +9,6 @@
     <!-- NO BORRAR: Etiqueta de verificación de Google Search Console -->
     <meta name="google-site-verification" content="pbaWqIfp2c-U7i4iu3zcZKQaEkeE2wxhrs20Dia5HU" />
 
-    <!-- Tipografías de estudio de diseño competitivo -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
@@ -27,7 +26,6 @@
             --accent-red: #ff3b4e;
             --accent-red-hover: #e02d3f;
             --accent-emerald: #10b981;
-            --accent-amber: #f59e0b;
         }
 
         * {
@@ -40,23 +38,9 @@
         html, body {
             background-color: var(--bg-main);
             color: var(--text-primary);
-            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             line-height: 1.6;
             overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* Grid sutil de telemetría en el fondo */
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            background-image: 
-                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-            background-size: 48px 48px;
-            pointer-events: none;
-            z-index: 0;
         }
 
         a {
@@ -68,8 +52,6 @@
             max-width: 1180px;
             margin: 0 auto;
             padding: 0 24px;
-            position: relative;
-            z-index: 1;
         }
 
         /* NAVBAR */
@@ -77,7 +59,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: rgba(6, 6, 8, 0.88);
+            background: rgba(6, 6, 8, 0.95);
             backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border-subtle);
             padding: 16px 0;
@@ -93,7 +75,6 @@
             font-family: 'Syne', sans-serif;
             font-weight: 800;
             font-size: 1.35rem;
-            letter-spacing: -0.03em;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -107,7 +88,6 @@
             border: 1px solid rgba(255, 59, 78, 0.35);
             padding: 2px 8px;
             border-radius: 4px;
-            letter-spacing: 0.05em;
         }
 
         .nav-links {
@@ -135,12 +115,6 @@
             border-radius: 6px;
             font-size: 0.85rem;
             font-weight: 700;
-            transition: transform 0.15s ease, opacity 0.2s;
-        }
-
-        .btn-nav-cta:hover {
-            opacity: 0.92;
-            transform: translateY(-1px);
         }
 
         .menu-trigger {
@@ -153,18 +127,48 @@
             font-size: 0.85rem;
             font-weight: 600;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: border-color 0.2s, background 0.2s;
         }
 
-        .menu-trigger:hover {
-            border-color: var(--accent-red);
-            background: #181b24;
-        }
-
-        /* DRAWER LATERAL INTERACTIVO */
+        /* DRAWER LATERAL */
         .drawer-overlay {
             position: fixed;
             inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1001;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .drawer-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .drawer {
+            position: fixed;
+            top: 0;
+            right: -380px;
+            width: 360px;
+            max-width: 90vw;
+            height: 100vh;
+            background: var(--bg-elevated);
+            border-left: 1px solid var(--border-strong);
+            z-index: 1002;
+            padding: 28px 24px;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .drawer.active {
+            right: 0;
+        }
+
+        .drawer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 18px;
+            border-bottom: 1px solid var(--border-
