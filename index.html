@@ -12,15 +12,15 @@ html,body{background:var(--bg)!important;color:var(--text)!important;line-height
 a{text-decoration:none;color:inherit}
 .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
 
-/* HEADER */
+/* HEADER Y BARRA DE ANUNCIOS */
+.ticker{background:var(--primary);color:#fff;font-size:.8rem;font-weight:700;text-align:center;padding:8px 16px}
 header{background:rgba(255,255,255,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
 .nav{display:flex;justify-content:space-between;align-items:center;height:76px}
 .logo{font-weight:800;font-size:1.35rem;letter-spacing:-0.5px;display:flex;align-items:center;gap:8px}
 .tag{background:var(--accent);color:var(--primary);font-size:.72rem;padding:4px 10px;border-radius:6px;border:1px solid #bfdbfe;font-weight:700}
-.nav-links{display:flex;gap:22px;font-size:.88rem;font-weight:600;color:var(--muted)}
+.nav-links{display:flex;gap:18px;font-size:.84rem;font-weight:600;color:var(--muted)}
 .nav-links a:hover{color:var(--primary)}
 .nav-btns{display:flex;gap:10px;align-items:center}
-.btn-top{background:var(--text);color:#fff;padding:10px 18px;border-radius:8px;font-size:.88rem;font-weight:600}
 .btn-top-x{background:#000;color:#fff;padding:10px 18px;border-radius:8px;font-size:.88rem;font-weight:600}
 
 /* HERO */
@@ -40,18 +40,25 @@ h1 span{color:var(--primary)}
 .b-vod{background:#fef3c7;color:#92400e;font-size:.72rem;font-weight:700;padding:3px 8px;border-radius:4px}
 .b-live{background:#dcfce7;color:#166534;font-size:.72rem;font-weight:700;padding:3px 8px;border-radius:4px}
 
-/* SECCIONES COMUNES */
+/* SECCIONES */
 .sec{padding:84px 0}
 .sec-h{max-width:680px;margin-bottom:48px}
 .eyebrow{color:var(--primary);font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:8px}
 h2{font-size:2.2rem;font-weight:800;margin-bottom:12px}
 .sub{color:var(--muted);font-size:1.05rem}
 
-/* DASHBOARD / MÉTRICAS DE IMPACTO */
-.metrics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;margin-bottom:48px}
+/* MÉTRICAS */
+.metrics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
 .metric-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;box-shadow:0 4px 16px rgba(15,23,42,.03)}
 .metric-num{font-size:2.4rem;font-weight:800;color:var(--primary);margin-bottom:4px}
 .metric-desc{color:var(--muted);font-size:.9rem}
+
+/* HERRAMIENTAS GRATUITAS (STORM SURGE Y WARM-UP) */
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:24px}
+.tool-box{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:0 4px 16px rgba(15,23,42,.04)}
+.tool-box h3{font-size:1.15rem;font-weight:700;margin-bottom:14px}
+.tool-input{width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:8px;background:var(--bg);font-size:.9rem;margin-bottom:12px}
+.tool-out{background:var(--accent);border:1px solid #bfdbfe;border-radius:10px;padding:14px;font-size:.9rem;font-weight:600;color:var(--primary);margin-top:12px}
 
 /* CALCULADORA DE PLANES */
 .calc-box{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:32px;box-shadow:0 4px 20px rgba(15,23,42,.04)}
@@ -60,7 +67,7 @@ h2{font-size:2.2rem;font-weight:800;margin-bottom:12px}
 .calc-select{width:100%;padding:12px 16px;border:1px solid var(--border);border-radius:8px;background:var(--bg);font-size:.95rem;font-weight:600;color:var(--text)}
 .calc-result{background:var(--accent);border:1px solid #bfdbfe;border-radius:12px;padding:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
 
-/* BIBLIOTECA TÁCTICA / GUÍAS RÁPIDAS */
+/* BIBLIOTECA TÁCTICA */
 .guides-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:24px}
 .guide-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:0 4px 16px rgba(15,23,42,.04);display:flex;flex-direction:column;justify-content:space-between}
 .guide-badge{font-size:.75rem;font-weight:700;color:var(--primary);background:var(--accent);padding:4px 10px;border-radius:6px;display:inline-block;margin-bottom:12px;width:fit-content}
@@ -81,6 +88,20 @@ h2{font-size:2.2rem;font-weight:800;margin-bottom:12px}
 .nota{width:120px;height:120px;border-radius:50%;background:var(--accent);border:4px solid var(--primary);margin:0 auto 20px;display:flex;flex-direction:column;justify-content:center;align-items:center}
 .nota b{font-size:2.6rem;color:var(--primary);line-height:1}
 .rango{background:var(--text);color:#fff;font-size:.85rem;font-weight:700;padding:6px 16px;border-radius:99px;display:inline-block;margin-bottom:16px}
+
+/* TIMELINE PASO A PASO */
+.timeline{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.step-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;box-shadow:0 4px 16px rgba(15,23,42,.03)}
+.step-num{font-family:'JetBrains Mono',monospace;font-size:.8rem;font-weight:700;color:var(--primary);margin-bottom:10px;display:block}
+.step-card h3{font-size:1.05rem;font-weight:700;margin-bottom:8px}
+.step-card p{color:var(--muted);font-size:.88rem}
+
+/* TABLA COMPARATIVA */
+.comp-table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:0 4px 16px rgba(15,23,42,.03)}
+.comp-table th,.comp-table td{padding:16px 20px;text-align:left;border-bottom:1px solid var(--border);font-size:.92rem}
+.comp-table th{background:var(--bg);font-weight:800}
+.comp-table td:nth-child(2){color:var(--muted)}
+.comp-table td:nth-child(3){color:var(--primary);font-weight:700;background:var(--accent)}
 
 /* WALL OF FAME */
 .fame-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px}
@@ -109,6 +130,9 @@ h2{font-size:2.2rem;font-weight:800;margin-bottom:12px}
 .faq-q{padding:20px;font-weight:700;font-size:1.05rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
 .faq-a{padding:0 20px 20px;color:var(--muted);font-size:.95rem;display:none;line-height:1.6}
 
+/* BOTÓN FLOTANTE */
+.float-btn{position:fixed;bottom:24px;right:24px;background:#000;color:#fff;padding:12px 20px;border-radius:99px;font-weight:700;box-shadow:0 10px 25px rgba(0,0,0,0.2);z-index:999;display:flex;align-items:center;gap:8px}
+
 footer{background:var(--card);border-top:1px solid var(--border);padding:40px 0;text-align:center;font-size:.9rem;color:var(--muted)}
 
 @media(max-width:880px){.hero-grid,.calc-grid{grid-template-columns:1fr}.nav-links{display:none}}
@@ -116,15 +140,17 @@ footer{background:var(--card);border-top:1px solid var(--border);padding:40px 0;
 </head>
 <body>
 
+<div class="ticker">🔥 Abiertas plazas para coaching esta semana — Últimos huecos para Live Coaching en NAC/BR</div>
+
 <header>
   <div class="wrap nav">
     <div class="logo">PRAMA <span class="tag">PRO ESPORTS</span></div>
     <div class="nav-links">
-      <a href="#metricas">Métricas</a>
+      <a href="#herramientas">Herramientas</a>
       <a href="#calculadora">Calculadora</a>
-      <a href="#guias">Biblioteca Táctica</a>
-      <a href="#test">Test de Nivel</a>
-      <a href="#resultados">Éxitos</a>
+      <a href="#guias">Biblioteca</a>
+      <a href="#test">Test</a>
+      <a href="#proceso">Proceso</a>
       <a href="#planes">Planes</a>
       <a href="#faq">FAQ</a>
     </div>
@@ -161,7 +187,7 @@ footer{background:var(--card);border-top:1px solid var(--border);padding:40px 0;
   </div>
 </section>
 
-<!-- MÉTRICAS DE IMPACTO -->
+<!-- MÉTRICAS -->
 <section class="sec" id="metricas" style="padding-bottom:0">
   <div class="wrap">
     <div class="sec-h">
@@ -186,8 +212,42 @@ footer{background:var(--card);border-top:1px solid var(--border);padding:40px 0;
   </div>
 </section>
 
-<!-- ASISTENTE / CALCULADORA DE PLANES -->
-<section class="sec" id="calculadora">
+<!-- HERRAMIENTAS GRATUITAS INTERACTIVAS -->
+<section class="sec" id="herramientas">
+  <div class="wrap">
+    <div class="sec-h">
+      <span class="eyebrow">Utilidades Pro</span>
+      <h2>Herramientas de Análisis Rápido</h2>
+      <p class="sub">Prueba nuestras calculadoras de utilidad diseñadas para optimizar tus partidas de torneo.</p>
+    </div>
+    <div class="tools-grid">
+      <div class="tool-box">
+        <h3>⚡ Simulador de Storm Surge</h3>
+        <p style="color:var(--muted);font-size:.9rem;margin-bottom:12px">Calcula el daño aproximado que requiere tu dúo según los jugadores vivos en zona.</p>
+        <label style="font-size:.85rem;font-weight:700">Selecciona la Zona actual:</label>
+        <select id="surge-zone" class="tool-input" onchange="calcSurge()">
+          <option value="120">Zona 3 (Umbral estimado: 120 de daño)</option>
+          <option value="150">Zona 4 (Umbral estimado: 150 de daño)</option>
+          <option value="180">Zona 5 (Umbral estimado: 180 de daño)</option>
+        </select>
+        <div class="tool-out" id="surge-out">Resultado: Necesitáis 1 bala de fusil pesado o 2 sprays limpios para asegurar el umbral.</div>
+      </div>
+      <div class="tool-box">
+        <h3>🎯 Generador de Warm-Up</h3>
+        <p style="color:var(--muted);font-size:.9rem;margin-bottom:12px">Obtén una rutina express de calentamiento antes de entrar a tu Cash Cup.</p>
+        <label style="font-size:.85rem;font-weight:700">Tiempo disponible:</label>
+        <select id="warm-time" class="tool-input" onchange="calcWarm()">
+          <option value="15">15 Minutos (Express / Solo Aim & Edits)</option>
+          <option value="30">30 Minutos (Completo / Piece Control + Realistics)</option>
+        </select>
+        <div class="tool-out" id="warm-out">Rutina: 5 min Freebuild + 10 min Raider's Mechanics V4 (Código: 7959-5922-4775).</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULADORA DE PLANES -->
+<section class="sec" id="calculadora" style="background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
   <div class="wrap">
     <div class="sec-h">
       <span class="eyebrow">Asistente Inteligente</span>
@@ -223,8 +283,8 @@ footer{background:var(--card);border-top:1px solid var(--border);padding:40px 0;
   </div>
 </section>
 
-<!-- BIBLIOTECA TÁCTICA / GUÍAS RÁPIDAS -->
-<section class="sec" id="guias" style="background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+<!-- BIBLIOTECA TÁCTICA -->
+<section class="sec" id="guias">
   <div class="wrap">
     <div class="sec-h">
       <span class="eyebrow">Recursos y Conceptos</span>
@@ -236,7 +296,7 @@ footer{background:var(--card);border-top:1px solid var(--border);padding:40px 0;
         <div>
           <span class="guide-badge">MACRO & DROP</span>
           <h3>Control Absoluto del Early-Game</h3>
-          <p>Aprende a calcular los tiempos de planeo, optimizar rutas de cofre y asegurar loadouts competitivos sin arriesgar 50/50 innecesarios que arruinen tu partida.</p>
+          <p>Aprende a calcular los tiempos de planeo, optimizar rutas de cofre y asegurar loadouts competitivos sin arriesgar 50/50 innecesarios.</p>
         </div>
         <a href="#planes" style="color:var(--primary);font-weight:700;font-size:.9rem">Ver planes de VODs →</a>
       </div>
@@ -244,15 +304,15 @@ footer{background:var(--card);border-top:1px solid var(--border);padding:40px 0;
         <div>
           <span class="guide-badge">MID-GAME & SURGE</span>
           <h3>Gestión de Daño y Zonas</h3>
-          <p>Estrategias de posicionamiento central y cálculo de umbrales para superar el Storm Surge de forma limpia disparando a objetivos seguros en rotación.</p>
+          <p>Estrategias de posicionamiento central y cálculo de umbrales para superar el Storm Surge de forma limpia disparando a objetivos seguros.</p>
         </div>
         <a href="#planes" style="color:var(--primary);font-weight:700;font-size:.9rem">Ver planes de Live Coaching →</a>
       </div>
       <div class="guide-card">
         <div>
           <span class="guide-badge">ENDGAME & CAPAS</span>
-          <h3>Supervivencia en Moving Zones</h3>
-          <p>Dominio del lado muerto del círculo, reutilización inteligente de materiales en capa baja y timing perfecto para buscar refrescos sin morir en el intento.</p>
+          ### Supervivencia en Moving Zones
+          <p>Dominio del lado muerto del círculo, reutilización inteligente de materiales en capa baja y timing perfecto para buscar refrescos.</p>
         </div>
         <a href="#planes" style="color:var(--primary);font-weight:700;font-size:.9rem">Ver Plan Elite Pro →</a>
       </div>
@@ -261,7 +321,7 @@ footer{background:var(--card);border-top:1px solid var(--border);padding:40px 0;
 </section>
 
 <!-- TEST DE CONOCIMIENTO (10 PREGUNTAS) -->
-<section class="sec" id="test">
+<section class="sec" id="test" style="background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
   <div class="wrap">
     <div class="sec-h">
       <span class="eyebrow">Diagnóstico en tiempo real</span>
@@ -295,8 +355,77 @@ footer{background:var(--card);border-top:1px solid var(--border);padding:40px 0;
   </div>
 </section>
 
+<!-- TIMELINE PASO A PASO -->
+<section class="sec" id="proceso">
+  <div class="wrap">
+    <div class="sec-h">
+      <span class="eyebrow">Metodología Transparente</span>
+      <h2>¿Cómo trabajamos desde el primer día?</h2>
+      <p class="sub">Un proceso estructurado para garantizar resultados medibles en tu juego competitivo.</p>
+    </div>
+    <div class="timeline">
+      <div class="step-card">
+        <span class="step-num">PASO 01</span>
+        <h3>Selección de Plan</h3>
+        <p>Eliges tu tarifa con pago seguro por PayPal.</p>
+      </div>
+      <div class="step-card">
+        <span class="step-num">PASO 02</span>
+        <h3>Confirmación en X</h3>
+        <p>Me avisas por mensaje directo con tu usuario de Discord.</p>
+      </div>
+      <div class="step-card">
+        <span class="step-num">PASO 03</span>
+        <h3>Sesión Analítica</h3>
+        <p>Revisión de VODs o Live Coaching en directo.</p>
+      </div>
+      <div class="step-card">
+        <span class="step-num">PASO 04</span>
+        <h3>Evolución Constante</h3>
+        <p>Aplicación de rutinas y subida de rango en torneos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TABLA COMPARATIVA DE VALOR -->
+<section class="sec" style="background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="wrap">
+    <div class="sec-h">
+      <span class="eyebrow">Por qué elegirnos</span>
+      <h4>Entrenar a ciegas vs. Metodología Prama</h4>
+    </div>
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Característica</th>
+          <th>Jugador Estándar (Solo Ranked)</th>
+          <th>Academia Prama Pro</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Análisis de Errores</td>
+          <td>Por intuición (suponiendo qué falló)</td>
+          <td>Frame a frame analizando repetición real</td>
+        </tr>
+        <tr>
+          <td>Gestión de Storm Surge</td>
+          <td>Acierto aleatorio en peleas tardías</td>
+          <td>Control de umbrales y timings exactos</td>
+        </tr>
+        <tr>
+          <td>Acompañamiento en Torneo</td>
+          <td>Ninguno (solo en partida)</td>
+          <td>Live Coaching en directo por Discord</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
 <!-- CASOS DE ÉXITO / WALL OF FAME -->
-<section class="sec" id="resultados" style="background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+<section class="sec" id="resultados">
   <div class="wrap">
     <div class="sec-h">
       <span class="eyebrow">Resultados verificados</span>
@@ -324,7 +453,7 @@ footer{background:var(--card);border-top:1px solid var(--border);padding:40px 0;
 </section>
 
 <!-- PLANES Y TARIFAS -->
-<section class="sec" id="planes">
+<section class="sec" id="planes" style="background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
   <div class="wrap">
     <div class="sec-h">
       <span class="eyebrow">Contratación directa</span>
@@ -383,7 +512,7 @@ footer{background:var(--card);border-top:1px solid var(--border);padding:40px 0;
 </section>
 
 <!-- FAQ DESPLEGABLE -->
-<section class="sec" id="faq" style="background:var(--card);border-top:1px solid var(--border)">
+<section class="sec" id="faq">
   <div class="wrap">
     <div class="sec-h" style="text-align:center;margin:0 auto 48px">
       <span class="eyebrow">Resolución de dudas</span>
@@ -407,11 +536,30 @@ footer{background:var(--card);border-top:1px solid var(--border);padding:40px 0;
   </div>
 </section>
 
+<a href="https://x.com/Pramaqy" target="_blank" class="float-btn">💬 Escríbeme en X</a>
+
 <footer>
   <div class="wrap"><strong>PRAMA</strong> — Fortnite Competitive Coaching & Analytics • PayPal: <strong>paypal.me/VyroEsports</strong> • X: <strong>@Pramaqy</strong></div>
 </footer>
 
 <script>
+// HERRAMIENTA STORM SURGE
+function calcSurge(){
+  const z = document.getElementById('surge-zone').value;
+  const out = document.getElementById('surge-out');
+  if(z === '120') out.textContent = "Resultado: Umbral de Zona 3. Necesitáis 1 bala de fusil pesado o 2 sprays limpios.";
+  else if(z === '150') out.textContent = "Resultado: Umbral de Zona 4. Buscad daño a distancia sobre equipos en rotación tardía.";
+  else out.textContent = "Resultado: Umbral de Zona 5. Densidad alta; priorizad tiros rápidos con sniper o fusil sin exponeros.";
+}
+
+// HERRAMIENTA WARM-UP
+function calcWarm(){
+  const t = document.getElementById('warm-time').value;
+  const out = document.getElementById('warm-out');
+  if(t === '15') out.textContent = "Rutina Express: 5 min Aim Vials + 10 min Raider's Mechanics V4 (7959-5922-4775).";
+  else out.textContent = "Rutina Completa: 10 min Aim Duel + 10 min Freebuild Edit + 10 min Realistics 2v2.";
+}
+
 // CALCULADORA INTELIGENTE
 function updateCalc(){
   const reg = document.getElementById('calc-region').value;
