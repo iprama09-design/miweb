@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Entrenador Prama | Elite Fortnite Coaching</title>
+    <!-- NO BORRAR: Etiqueta de verificación de Google Search Console -->
+    <meta name="google-site-verification" content="pbaWqIfp2c-U7i4iu3zcZKQaEkeE2wxhrs20Dia5HU" />
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -93,7 +95,7 @@
             box-shadow: 0 0 15px var(--accent-cyan);
         }
 
-        /* PANEL DESPLEGABLE LIMPIO */
+        /* PANEL DESPLEGABLE */
         .dropdown {
             position: fixed;
             top: 0;
@@ -138,19 +140,24 @@
             cursor: pointer;
         }
 
-        .dropdown a {
+        .dropdown a, .dropdown button.menu-link-btn {
             color: var(--text-muted);
             text-decoration: none;
+            background: none;
+            border: none;
+            width: 100%;
+            text-align: left;
             padding: 10px 12px;
             border-radius: 6px;
             font-weight: 500;
             font-size: 0.95rem;
+            cursor: pointer;
             transition: all 0.2s ease;
             display: block;
             border-bottom: 1px solid rgba(255,255,255,0.03);
         }
 
-        .dropdown a:hover {
+        .dropdown a:hover, .dropdown button.menu-link-btn:hover {
             color: var(--accent-cyan);
             background: rgba(0, 240, 255, 0.08);
             padding-left: 15px;
@@ -165,7 +172,7 @@
             margin: 15px 0 5px 8px;
         }
 
-        /* SECCIÓN HERO / INICIO */
+        /* SECCIÓN HERO */
         .hero {
             max-width: 900px;
             margin: 60px auto 40px;
@@ -240,7 +247,73 @@
             font-weight: bold;
         }
 
-        /* SECCIÓN PLANES Y SERVICIOS */
+        /* MINI JUEGO TÁCTICO DE DÚOS */
+        .minigame-container {
+            background: linear-gradient(145deg, #0d1322, #070a14);
+            border: 2px solid var(--accent-purple);
+            border-radius: 16px;
+            padding: 30px;
+            margin: 50px auto;
+            max-width: 900px;
+            box-shadow: 0 0 30px rgba(157, 78, 221, 0.2);
+            text-align: left;
+        }
+
+        .minigame-container h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: #d8b4fe;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .minigame-container p.scenario {
+            color: #fff;
+            font-size: 1.1rem;
+            margin: 20px 0;
+            background: rgba(0,0,0,0.3);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid var(--accent-cyan);
+        }
+
+        .mg-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .mg-btn {
+            background: #1e1b4b;
+            color: #e0e7ff;
+            border: 1px solid #6366f1;
+            padding: 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+
+        .mg-btn:hover {
+            background: var(--accent-purple);
+            color: #fff;
+            border-color: #fff;
+            box-shadow: 0 0 15px var(--accent-purple);
+        }
+
+        #mg-result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: 600;
+            display: none;
+        }
+
+        /* CONTENEDOR GENERAL DE PLANES */
         .container {
             max-width: 1000px;
             margin: 60px auto;
@@ -301,7 +374,7 @@
             color: #d8b4fe;
         }
 
-        ul {
+        ul.plan-list {
             list-style: none;
             padding: 0;
             margin-bottom: 30px;
@@ -309,7 +382,7 @@
             color: var(--text-muted);
         }
 
-        ul li {
+        ul.plan-list li {
             margin-bottom: 12px;
             font-size: 0.95rem;
         }
@@ -391,7 +464,7 @@
         <div class="menu-section-title">Navegación General</div>
         <a href="#inicio" onclick="toggleMenu()">🏠 Inicio / Historia de Prama</a>
         <a href="#planes" onclick="toggleMenu()">💎 Planes y Servicios de Coaching</a>
-        <a href="https://x.com/Pramaqy" target="_blank" onclick="toggleMenu()">💬 Contáctanos (Twitter Oficial)[cite: 5]</a>
+        <a href="https://x.com/Pramaqy" target="_blank" onclick="toggleMenu()">💬 Contáctanos (Twitter Oficial)</a>
 
         <div class="menu-section-title">Pasarelas y Pagos (PayPal)</div>
         <a href="https://paypal.me/VyroEsports" target="_blank" onclick="toggleMenu()">💳 Pagar Plan Básico (15€)</a>
@@ -405,11 +478,11 @@
         <a href="#planes" onclick="toggleMenu()">🏰 Dominio de Box-Fighting</a>
         <a href="#planes" onclick="toggleMenu()">🗺️ Rotaciones y Endgame (FNCS)</a>
         <a href="#planes" onclick="toggleMenu()">📊 Estudio de Drop-Spots</a>
-        <a href="#planes" onclick="toggleMenu()">👥 Sinergia y Táctica de Dúos</a>
+        <button class="menu-link-btn" onclick="toggleMenu(); scrollToMinigame()">👥 Sinergia y Táctica de Dúos (MiniJuego)</button>
 
         <div class="menu-section-title">Soporte y Registro de Compra</div>
         <a href="https://x.com/Pramaqy" target="_blank" onclick="toggleMenu()">📝 Enviar Comprobante de Pago</a>
-        <a href="https://x.com/Pramaqy" target="_blank" onclick="toggleMenu()">🐦 Twitter Oficial (@Pramaqy)[cite: 5]</a>
+        <a href="https://x.com/Pramaqy" target="_blank" onclick="toggleMenu()">🐦 Twitter Oficial (@Pramaqy)</a>
         <a href="https://x.com/Pramaqy" target="_blank" onclick="toggleMenu()">❓ Ayuda y Guía de Contratación</a>
     </div>
 
@@ -424,8 +497,23 @@
             <p>Desde el control absoluto de los enfrentamientos de box-fighting hasta la toma de decisiones milimétrica en los Endgames de torneos regionales (FNCS y Cash Cups), mi misión es llevarte directamente al siguiente nivel competitivo. Si buscas resultados reales y dejar de cometer errores evitables, estás en el lugar indicado.</p>
             
             <div class="notice-box">
-                ⚡ <strong>¿Has realizado una compra?</strong> Tras abonar tu plan en PayPal, haz clic en el botón <em>"Registrar mi contacto"</em> de abajo o <a href="https://x.com/Pramaqy" target="_blank">escríbeme directamente por Twitter</a> para que me llegue tu aviso y coordinemos tu sesión al instante[cite: 5].
+                ⚡ <strong>¿Has realizado una compra?</strong> Tras abonar tu plan en PayPal, haz clic en el botón <em>"Registrar mi contacto"</em> de abajo o <a href="https://x.com/Pramaqy" target="_blank">escríbeme directamente por Twitter</a> para que me llegue tu aviso y coordinemos tu sesión al instante.
             </div>
+        </div>
+    </div>
+
+    <!-- MINI JUEGO TÁCTICO DE DÚOS -->
+    <div class="container" id="tacticas-duos">
+        <div class="minigame-container">
+            <h3>👥 Simulador Táctico de Dúos (Mini-Juego Prama)</h3>
+            <p class="scenario" id="mg-scenario">Situación de Torneo (Fncs Mov 4): Tu dúo se ha quedado sin materiales de construcción rápido y la zona se mueve hacia una colina alta llena de contrarios. ¿Cuál es tu llamada táctica?</p>
+            
+            <div class="mg-options" id="mg-options-box">
+                <button class="mg-btn" onclick="evaluarJugada(1)">A) Lanzar crash pads en línea recta hacia la altura y buscar frags de refresco rápido.</button>
+                <button class="mg-btn" onclick="evaluarJugada(2)">B) Jugar por capas bajas, tunelar con madera sobrante y buscar un hueco lateral seguro.</button>
+            </div>
+            
+            <div id="mg-result"></div>
         </div>
     </div>
 
@@ -440,7 +528,7 @@
                 <div>
                     <h3>Plan Básico</h3>
                     <div class="price">15€</div>
-                    <ul>
+                    <ul class="plan-list">
                         <li>✓ Revisión exhaustiva de 1 VOD</li>
                         <li>✓ Corrección táctica de box-fighting</li>
                         <li>✓ Pautas de early y mid-game</li>
@@ -458,7 +546,7 @@
                     <span style="background:var(--accent-purple); color:#fff; padding:4px 10px; border-radius:6px; font-size:0.75rem; font-weight:bold;">MÁS POPULAR</span>
                     <h3 style="margin-top:10px;">Plan Intermedio</h3>
                     <div class="price">45€</div>
-                    <ul>
+                    <ul class="plan-list">
                         <li>✓ Análisis de partidas en directo</li>
                         <li>✓ Rutinas avanzadas de aim y edición</li>
                         <li>✓ Estrategias de rotación y Endgame</li>
@@ -476,7 +564,7 @@
                 <div>
                     <h3>Plan Elite Pro</h3>
                     <div class="price">75€</div>
-                    <ul>
+                    <ul class="plan-list">
                         <li>✓ Acompañamiento en directo en torneos</li>
                         <li>✓ Estudio profundo de Drop-Spots</li>
                         <li>✓ Seguimiento estadístico continuo</li>
@@ -498,10 +586,31 @@
         <p style="margin-top: 15px; color: #475569;">&copy; 2026 Todos los derechos reservados.</p>
     </footer>
 
-    <!-- SCRIPT DEL MENÚ -->
+    <!-- SCRIPT DEL MENÚ Y MINIJUEGO -->
     <script>
         function toggleMenu() {
             document.getElementById('myDropdown').classList.toggle('active');
+        }
+
+        function scrollToMinigame() {
+            const el = document.getElementById('tacticas-duos');
+            el.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function evaluarJugada(opcion) {
+            const resultBox = document.getElementById('mg-result');
+            resultBox.style.display = 'block';
+            if(opcion === 1) {
+                resultBox.style.background = 'rgba(255, 77, 77, 0.15)';
+                resultBox.style.border = '1px solid #ff4d4d';
+                resultBox.style.color = '#ff9999';
+                resultBox.innerHTML = '❌ <strong>¡Error crítico de macro!</strong> Lanzarse sin cobertura alta en moving zones te expone al focus de los lobbies altos. ¡Necesitas un VOD Review con Prama urgente para corregir esto!';
+            } else {
+                resultBox.style.background = 'rgba(0, 240, 255, 0.15)';
+                resultBox.style.border = '1px solid var(--accent-cyan)';
+                resultBox.style.color = '#a5f3fc';
+                resultBox.innerHTML = '✅ <strong>¡Excelente decisión táctica!</strong> Conservar recursos y buscar capas seguras asegura puntos de posición vitales. ¡Tienes madera de clasificado a FNCS!';
+            }
         }
     </script>
 </body>
